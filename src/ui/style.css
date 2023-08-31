@@ -1,0 +1,35 @@
+#app {
+  margin: 20px;
+}
+@media (min-width: 500px) {
+  #app {
+    max-width: 500px;
+    margin: 20px auto;
+  }
+}
+@media (min-width: 769px) {
+  #app {
+    max-width: 700px;
+  }
+}
+
+/* Root page */
+
+.root-page__container-cards-car {
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+}
+@media (min-width: 769px) {
+  .root-page__container-cards-car {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.root-page__card-car:not(:last-child) {
+  margin-bottom: 0;
+}
+.root-page__card-car {
+  width: 250px;
+}
