@@ -27,6 +27,7 @@ function Root() {
         }) => (
           <CarCard
             key={id}
+            id={id}
             brand={brand}
             passengers={passengers}
             kms={kms}
