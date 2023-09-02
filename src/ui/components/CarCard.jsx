@@ -20,7 +20,7 @@ function CarCard({
 }
 
 CarCard.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   brand: PropTypes.string.isRequired,
   passengers: PropTypes.number.isRequired,
   kms: PropTypes.number.isRequired,
