@@ -13,6 +13,15 @@
   }
 }
 
+/* Car Card */
+
+.card-car:not(:last-child) {
+  margin-bottom: 0;
+}
+.card-car {
+  width: 250px;
+}
+
 /* Root page */
 
 .root-page__container-cards-car {
@@ -24,12 +33,55 @@
   .root-page__container-cards-car {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 }
 
-.root-page__card-car:not(:last-child) {
-  margin-bottom: 0;
+/* Form page */
+
+.form-page__fieldset-air-conditioning {
+  display: grid;
+  margin: 0 0 20px 0;
 }
-.root-page__card-car {
-  width: 250px;
+@media (min-width: 500px) {
+  .form-page__fieldset-air-conditioning {
+    display: flex;
+  }
+}
+
+.form-page__fieldset-transmission {
+  display: grid;
+  margin: 0 0 30px 0;
+}
+@media (min-width: 500px) {
+  .form-page__fieldset-transmission {
+    display: flex;
+  }
+}
+
+.form-page__label-air-conditioning,
+.form-page__label-transmission {
+  margin: 0 0 5px 0;
+}
+@media (min-width: 500px) {
+  .form-page__label-air-conditioning,
+  .form-page__label-transmission {
+    margin: 0 15px 0 0;
+  }
+}
+
+.form-page__container-fieldset-yes,
+.form-page__container-fieldset-no,
+.form-page__container-fieldset-manual,
+.form-page__container-fieldset-automatic {
+  display: flex;
+  gap: 5px;
+}
+@media (min-width: 500px) {
+  .form-page__container-fieldset-yes,
+  .form-page__container-fieldset-no,
+  .form-page__container-fieldset-manual,
+  .form-page__container-fieldset-automatic {
+    margin: 0 10px 0 0;
+  }
 }
