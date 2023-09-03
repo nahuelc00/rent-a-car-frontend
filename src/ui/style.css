@@ -85,3 +85,25 @@
     margin: 0 10px 0 0;
   }
 }
+
+/* Detail page */
+.detail-page__container-columns-car-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 320px) {
+  .detail-page__container-columns-car-info {
+    grid-template-columns: 1fr 1fr ;
+  }
+}
+@media (min-width: 500px) {
+  .detail-page__container-columns-car-info {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (min-width: 769px) {
+  .detail-page__container-columns-car-info {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
