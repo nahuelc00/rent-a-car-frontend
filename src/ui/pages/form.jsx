@@ -234,6 +234,7 @@ function Form({ isUpdate }) {
 Form.propTypes = {
   isUpdate: PropTypes.oneOfType([
     PropTypes.string,
+    PropTypes.bool,
   ]),
 };
 
