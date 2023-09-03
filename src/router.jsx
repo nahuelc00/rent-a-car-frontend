@@ -17,6 +17,10 @@ const router = createBrowserRouter([
     path: 'detail/:id',
     element: <Detail />,
   },
+  {
+    path: 'form/edit/:id',
+    element: <Form isUpdate />,
+  },
 ]);
 
 export { router };

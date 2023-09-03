@@ -3,13 +3,16 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
+import { useParams } from 'react-router-dom';
 import { ModalSaveCar } from '../components/ModalSaveCar';
 import { PageExit } from '../components/PageExit';
 import { useHandleSaveCar } from '../../hooks/useHandleSaveCar';
 import { Loader } from '../components/Loader';
 import { Modal } from '../components/Modal';
+import { getCar } from '../../services/cars';
+import { useHandleUpdateCar } from '../../hooks/useHandleUpdateCar';
 
 function validateForm(values) {
   let quantityErrors = 0;
@@ -23,9 +26,11 @@ function validateForm(values) {
   if (quantityErrors !== 0) return false;
 }
 
-function Form() {
+function Form({ isUpdate }) {
   const [displayModalSave, setDisplayModalSave] = useState(false);
   const { handleSaveCar, isSaving, endOfSave } = useHandleSaveCar();
+  const { handleUpdateCar, isUpdating, endOfUpdating } = useHandleUpdateCar();
+  const { id } = useParams();
 
   const formik = useFormik({
     initialValues: {
@@ -47,15 +52,37 @@ function Form() {
     },
   });
 
+  useEffect(() => {
+    if (isUpdate) {
+      getCar(id).then((car) => {
+        formik.setValues({
+          id: car.id,
+          brand: car.brand,
+          year: car.year,
+          color: car.color,
+          passengers: car.passengers,
+          model: car.model,
+          kilometers: car.kms,
+          airConditioning: car.airConditioning,
+          transmission: car.transmission,
+        });
+      });
+    }
+  }, [getCar]);
+
   function handleSaveInModal() {
-    handleSaveCar(formik.values);
+    if (isUpdate) {
+      handleUpdateCar(formik.values);
+    } else {
+      handleSaveCar(formik.values);
+    }
   }
 
   function handleCancelInModal() {
     setDisplayModalSave(false);
   }
 
-  if (isSaving) {
+  if (isSaving || isUpdating) {
     return (
       <div className="is-flex is-justify-content-center">
         <Loader />
@@ -63,7 +90,7 @@ function Form() {
     );
   }
 
-  if (endOfSave) {
+  if (endOfSave || endOfUpdating) {
     return (
       <Modal title="Car saved successfully" exitRoute="/" />
     );
@@ -158,22 +185,41 @@ function Form() {
               onChange={formik.handleChange}
               type="radio"
               value="yes"
+              checked={formik.values.airConditioning === true}
             />
           </div>
           <div className="form-page__container-fieldset-no">
             <label>No</label>
-            <input name="airConditioning" onChange={formik.handleChange} type="radio" value="no" />
+            <input
+              name="airConditioning"
+              onChange={formik.handleChange}
+              type="radio"
+              value="no"
+              checked={formik.values.airConditioning === false}
+            />
           </div>
         </fieldset>
         <fieldset className="form-page__fieldset-transmission">
           <label className="form-page__label-transmission has-text-weight-semibold">Transmission</label>
           <div className="form-page__container-fieldset-manual">
             <label>Manual</label>
-            <input name="transmission" onChange={formik.handleChange} type="radio" value="manual" />
+            <input
+              name="transmission"
+              onChange={formik.handleChange}
+              type="radio"
+              value="manual"
+              checked={formik.values.transmission === 'manual'}
+            />
           </div>
           <div className="form-page__container-fieldset-automatic">
             <label>Automatic</label>
-            <input name="transmission" onChange={formik.handleChange} type="radio" value="automatic" />
+            <input
+              name="transmission"
+              onChange={formik.handleChange}
+              type="radio"
+              value="automatic"
+              checked={formik.values.transmission === 'automatic'}
+            />
           </div>
         </fieldset>
 
