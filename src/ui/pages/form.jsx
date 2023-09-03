@@ -105,6 +105,8 @@ function Form({ isUpdate }) {
     );
   }
 
+  console.log(formik.values);
+
   return (
     <>
       <div className="mb-5">
@@ -185,7 +187,7 @@ function Form({ isUpdate }) {
               onChange={formik.handleChange}
               type="radio"
               value="yes"
-              checked={formik.values.airConditioning === true}
+              defaultChecked={formik.values.airConditioning === true ? 'checked' : null}
             />
           </div>
           <div className="form-page__container-fieldset-no">
@@ -195,7 +197,7 @@ function Form({ isUpdate }) {
               onChange={formik.handleChange}
               type="radio"
               value="no"
-              checked={formik.values.airConditioning === false}
+              defaultChecked={formik.values.airConditioning === false ? 'checked' : null}
             />
           </div>
         </fieldset>
@@ -208,7 +210,7 @@ function Form({ isUpdate }) {
               onChange={formik.handleChange}
               type="radio"
               value="manual"
-              checked={formik.values.transmission === 'manual'}
+              defaultChecked={formik.values.transmission === 'manual' ? 'checked' : null}
             />
           </div>
           <div className="form-page__container-fieldset-automatic">
@@ -218,7 +220,7 @@ function Form({ isUpdate }) {
               onChange={formik.handleChange}
               type="radio"
               value="automatic"
-              checked={formik.values.transmission === 'automatic'}
+              defaultChecked={formik.values.transmission === 'automatic' ? 'checked' : null}
             />
           </div>
         </fieldset>
