@@ -12,7 +12,7 @@ function CarCard({
       <p className="mb-2">{`${kms} kms`}</p>
       <Link to={`detail/${id}`}>Detail</Link>
       <div>
-        <Link href className="mr-1">Edit</Link>
+        <Link to={`form/edit/${id}`} className="mr-1">Edit</Link>
         <Link href>Delete</Link>
       </div>
     </div>
