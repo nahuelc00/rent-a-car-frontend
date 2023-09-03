@@ -18,4 +18,16 @@ function saveCar(car) {
   });
 }
 
-export { getCars, saveCar, getCar };
+function updateCar(car) {
+  return fetch(`${API_HOST}/cars`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'PUT',
+    body: JSON.stringify(car),
+  });
+}
+
+export {
+  getCars, saveCar, getCar, updateCar,
+};
