@@ -105,8 +105,6 @@ function Form({ isUpdate }) {
     );
   }
 
-  console.log(formik.values);
-
   return (
     <>
       <div className="mb-5">
