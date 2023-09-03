@@ -1,8 +1,10 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { useParams } from 'react-router-dom';
@@ -228,5 +230,11 @@ function Form({ isUpdate }) {
     </>
   );
 }
+
+Form.propTypes = {
+  isUpdate: PropTypes.oneOfType([
+    PropTypes.string,
+  ]),
+};
 
 export { Form };
