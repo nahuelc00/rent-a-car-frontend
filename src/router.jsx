@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { Root } from './ui/pages/root';
 import { Form } from './ui/pages/form';
 import { Detail } from './ui/pages/detail';
+import { Delete } from './ui/pages/delete';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
     path: 'form/edit/:id',
     element: <Form isUpdate />,
   },
+  {
+    path: 'delete/:id',
+    element: <Delete />,
+  },
+
 ]);
 
 export { router };
