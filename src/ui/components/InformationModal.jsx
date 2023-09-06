@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { PageExit } from './PageExit';
 
-function Modal({ title, exitRoute }) {
+function InformationModal({ title, exitRoute }) {
   return (
     <div className="modal is-active">
       <div className="modal-background" />
@@ -20,9 +20,9 @@ function Modal({ title, exitRoute }) {
   );
 }
 
-Modal.propTypes = {
+InformationModal.propTypes = {
   title: PropTypes.string.isRequired,
   exitRoute: PropTypes.string.isRequired,
 };
 
-export { Modal };
+export { InformationModal };

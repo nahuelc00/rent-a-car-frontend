@@ -1,19 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ModalSaveCar({ handleSaveModal, handleCancelModal }) {
+function ActionModal({
+  handleAffirmationModal, handleCancelModal, title, subtitle,
+  action,
+}) {
   return (
     <div className="modal is-active">
       <div className="modal-background" />
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title">Save car</p>
+          <p className="modal-card-title">{ title }</p>
         </header>
         <section className="modal-card-body">
-          <h2>Are you sure you want to save this car?</h2>
+          <h2>{ subtitle }</h2>
         </section>
         <footer className="modal-card-foot">
-          <button onClick={handleSaveModal} type="button" className="button is-success">Save</button>
+          <button onClick={handleAffirmationModal} type="button" className="button is-success">{ action }</button>
           <button onClick={handleCancelModal} type="button" className="button">Cancel</button>
         </footer>
       </div>
@@ -21,9 +24,12 @@ function ModalSaveCar({ handleSaveModal, handleCancelModal }) {
   );
 }
 
-ModalSaveCar.propTypes = {
+ActionModal.propTypes = {
+  action: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
   handleCancelModal: PropTypes.func.isRequired,
-  handleSaveModal: PropTypes.func.isRequired,
+  handleAffirmationModal: PropTypes.func.isRequired,
 };
 
-export { ModalSaveCar };
+export { ActionModal };
