@@ -8,11 +8,11 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { useParams } from 'react-router-dom';
-import { ModalSaveCar } from '../components/ModalSaveCar';
+import { ActionModal } from '../components/ActionModal';
 import { PageExit } from '../components/PageExit';
 import { useHandleSaveCar } from '../../hooks/useHandleSaveCar';
 import { Loader } from '../components/Loader';
-import { Modal } from '../components/Modal';
+import { InformationModal } from '../components/InformationModal';
 import { getCar } from '../../services/cars';
 import { useHandleUpdateCar } from '../../hooks/useHandleUpdateCar';
 
@@ -94,15 +94,18 @@ function Form({ isUpdate }) {
 
   if (endOfSave || endOfUpdating) {
     return (
-      <Modal title="Car saved successfully" exitRoute="/" />
+      <InformationModal title="Car saved successfully" exitRoute="/" />
     );
   }
 
   if (displayModalSave) {
     return (
-      <ModalSaveCar
+      <ActionModal
+        action="Save"
+        title="Save car"
+        subtitle="Are you sure you want to save this car?"
         handleCancelModal={handleCancelInModal}
-        handleSaveModal={handleSaveInModal}
+        handleAffirmationModal={handleSaveInModal}
       />
     );
   }
