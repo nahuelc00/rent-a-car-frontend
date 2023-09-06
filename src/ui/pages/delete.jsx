@@ -1,26 +1,21 @@
 /* eslint-disable react/jsx-no-bind */
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ActionModal } from '../components/ActionModal';
-import { deleteCar } from '../../services/cars';
 import { InformationModal } from '../components/InformationModal';
 import { Loader } from '../components/Loader';
+import { useHandleDeleteCar } from '../../hooks/useHandleDeleteCar';
 
 function Delete() {
   const { id } = useParams();
-  const [isCarDeleted, setIsCarDeleted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { handleDeleteCar, isLoading, endOfDelete } = useHandleDeleteCar();
 
-  function handleDeleteCar() {
-    setIsLoading(true);
-    deleteCar(id).then(() => {
-      setIsLoading(false);
-      setIsCarDeleted(true);
-    });
+  function handleDelete() {
+    handleDeleteCar(id);
   }
 
-  function handleCancelCar() {
+  function handleCancelDelete() {
     navigate('/');
   }
 
@@ -32,9 +27,9 @@ function Delete() {
     );
   }
 
-  if (isCarDeleted) {
+  if (endOfDelete) {
     return (
-      <InformationModal title="Car deleted succesfully" exitRoute="/" />
+      <InformationModal title="Car deleted successfully" exitRoute="/" />
     );
   }
 
@@ -42,8 +37,8 @@ function Delete() {
     <ActionModal
       title="Delete car"
       subtitle="Are you sure you want to delete the car?"
-      handleAffirmationModal={handleDeleteCar}
-      handleCancelModal={handleCancelCar}
+      handleAffirmationModal={handleDelete}
+      handleCancelModal={handleCancelDelete}
       action="Delete"
     />
   );
