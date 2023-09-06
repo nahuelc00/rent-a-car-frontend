@@ -13,7 +13,7 @@ function CarCard({
       <Link to={`detail/${id}`}>Detail</Link>
       <div>
         <Link to={`form/edit/${id}`} className="mr-1">Edit</Link>
-        <Link href>Delete</Link>
+        <Link to={`delete/${id}`}>Delete</Link>
       </div>
     </div>
   );
