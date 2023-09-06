@@ -28,6 +28,12 @@ function updateCar(car) {
   });
 }
 
+function deleteCar(id) {
+  return fetch(`${API_HOST}/car/${id}`, {
+    method: 'DELETE',
+  });
+}
+
 export {
-  getCars, saveCar, getCar, updateCar,
+  getCars, saveCar, getCar, updateCar, deleteCar,
 };
