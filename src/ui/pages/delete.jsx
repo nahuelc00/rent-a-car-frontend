@@ -34,13 +34,15 @@ function Delete() {
   }
 
   return (
-    <ActionModal
-      title="Delete car"
-      subtitle="Are you sure you want to delete the car?"
-      handleAffirmationModal={handleDelete}
-      handleCancelModal={handleCancelDelete}
-      action="Delete"
-    />
+    <main>
+      <ActionModal
+        title="Delete car"
+        subtitle="Are you sure you want to delete the car?"
+        handleAffirmationModal={handleDelete}
+        handleCancelModal={handleCancelDelete}
+        action="Delete"
+      />
+    </main>
   );
 }
 

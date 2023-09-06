@@ -112,124 +112,128 @@ function Form({ isUpdate }) {
 
   return (
     <>
-      <div className="mb-5">
+      <header className="mb-5">
         <PageExit exitRoute="/" />
-      </div>
+      </header>
 
-      <form onSubmit={formik.handleSubmit}>
-        <fieldset className="mb-2">
-          <label className="has-text-weight-semibold">Brand</label>
-          <input
-            type="text"
-            name="brand"
-            value={formik.values.brand}
-            onChange={formik.handleChange}
-            className={formik.values.brand === '' ? 'input is-danger' : 'input is-success'}
-          />
-        </fieldset>
-        <fieldset className="mb-2">
-          <label className="has-text-weight-semibold">Year</label>
-          <input
-            min={1200}
-            type="number"
-            name="year"
-            value={formik.values.year}
-            onChange={formik.handleChange}
-            className={formik.values.year === '' ? 'input is-danger' : 'input is-success'}
-          />
+      <main>
 
-        </fieldset>
-        <fieldset className="mb-2">
-          <label className="has-text-weight-semibold">Color</label>
-          <input
-            type="text"
-            name="color"
-            value={formik.values.color}
-            onChange={formik.handleChange}
-            className={formik.values.color === '' ? 'input is-danger' : 'input is-success'}
-          />
-        </fieldset>
-        <fieldset className="mb-2">
-          <label className="has-text-weight-semibold">Passengers</label>
-          <input
-            min={1}
-            type="number"
-            name="passengers"
-            value={formik.values.passengers}
-            onChange={formik.handleChange}
-            className={formik.values.passengers === '' ? 'input is-danger' : 'input is-success'}
-          />
-        </fieldset>
-        <fieldset className="mb-2">
-          <label className="has-text-weight-semibold">Model</label>
-          <input
-            type="text"
-            name="model"
-            value={formik.values.model}
-            onChange={formik.handleChange}
-            className={formik.values.model === '' ? 'input is-danger' : 'input is-success'}
-          />
-        </fieldset>
-        <fieldset className="mb-4">
-          <label className="has-text-weight-semibold">Kilometers</label>
-          <input
-            min={1}
-            type="number"
-            name="kilometers"
-            value={formik.values.kilometers}
-            onChange={formik.handleChange}
-            className={formik.values.kilometers === '' ? 'input is-danger' : 'input is-success'}
-          />
-        </fieldset>
-        <fieldset className="form-page__fieldset-air-conditioning">
-          <label className="form-page__label-air-conditioning has-text-weight-semibold">Air Conditioning</label>
-          <div className="form-page__container-fieldset-yes">
-            <label>Yes</label>
+        <form onSubmit={formik.handleSubmit}>
+          <fieldset className="mb-2">
+            <label className="has-text-weight-semibold">Brand</label>
             <input
-              name="airConditioning"
+              type="text"
+              name="brand"
+              value={formik.values.brand}
               onChange={formik.handleChange}
-              type="radio"
-              value="yes"
-              defaultChecked={formik.values.airConditioning === true ? 'checked' : null}
+              className={formik.values.brand === '' ? 'input is-danger' : 'input is-success'}
             />
-          </div>
-          <div className="form-page__container-fieldset-no">
-            <label>No</label>
+          </fieldset>
+          <fieldset className="mb-2">
+            <label className="has-text-weight-semibold">Year</label>
             <input
-              name="airConditioning"
+              min={1200}
+              type="number"
+              name="year"
+              value={formik.values.year}
               onChange={formik.handleChange}
-              type="radio"
-              value="no"
-              defaultChecked={formik.values.airConditioning === false ? 'checked' : null}
+              className={formik.values.year === '' ? 'input is-danger' : 'input is-success'}
             />
-          </div>
-        </fieldset>
-        <fieldset className="form-page__fieldset-transmission">
-          <label className="form-page__label-transmission has-text-weight-semibold">Transmission</label>
-          <div className="form-page__container-fieldset-manual">
-            <label>Manual</label>
-            <input
-              name="transmission"
-              onChange={formik.handleChange}
-              type="radio"
-              value="manual"
-              defaultChecked={formik.values.transmission === 'manual' ? 'checked' : null}
-            />
-          </div>
-          <div className="form-page__container-fieldset-automatic">
-            <label>Automatic</label>
-            <input
-              name="transmission"
-              onChange={formik.handleChange}
-              type="radio"
-              value="automatic"
-              defaultChecked={formik.values.transmission === 'automatic' ? 'checked' : null}
-            />
-          </div>
-        </fieldset>
 
-        <button className="button is-primary" type="submit">Save car</button>
-      </form>
+          </fieldset>
+          <fieldset className="mb-2">
+            <label className="has-text-weight-semibold">Color</label>
+            <input
+              type="text"
+              name="color"
+              value={formik.values.color}
+              onChange={formik.handleChange}
+              className={formik.values.color === '' ? 'input is-danger' : 'input is-success'}
+            />
+          </fieldset>
+          <fieldset className="mb-2">
+            <label className="has-text-weight-semibold">Passengers</label>
+            <input
+              min={1}
+              type="number"
+              name="passengers"
+              value={formik.values.passengers}
+              onChange={formik.handleChange}
+              className={formik.values.passengers === '' ? 'input is-danger' : 'input is-success'}
+            />
+          </fieldset>
+          <fieldset className="mb-2">
+            <label className="has-text-weight-semibold">Model</label>
+            <input
+              type="text"
+              name="model"
+              value={formik.values.model}
+              onChange={formik.handleChange}
+              className={formik.values.model === '' ? 'input is-danger' : 'input is-success'}
+            />
+          </fieldset>
+          <fieldset className="mb-4">
+            <label className="has-text-weight-semibold">Kilometers</label>
+            <input
+              min={1}
+              type="number"
+              name="kilometers"
+              value={formik.values.kilometers}
+              onChange={formik.handleChange}
+              className={formik.values.kilometers === '' ? 'input is-danger' : 'input is-success'}
+            />
+          </fieldset>
+          <fieldset className="form-page__fieldset-air-conditioning">
+            <label className="form-page__label-air-conditioning has-text-weight-semibold">Air Conditioning</label>
+            <div className="form-page__container-fieldset-yes">
+              <label>Yes</label>
+              <input
+                name="airConditioning"
+                onChange={formik.handleChange}
+                type="radio"
+                value="yes"
+                defaultChecked={formik.values.airConditioning === true ? 'checked' : null}
+              />
+            </div>
+            <div className="form-page__container-fieldset-no">
+              <label>No</label>
+              <input
+                name="airConditioning"
+                onChange={formik.handleChange}
+                type="radio"
+                value="no"
+                defaultChecked={formik.values.airConditioning === false ? 'checked' : null}
+              />
+            </div>
+          </fieldset>
+          <fieldset className="form-page__fieldset-transmission">
+            <label className="form-page__label-transmission has-text-weight-semibold">Transmission</label>
+            <div className="form-page__container-fieldset-manual">
+              <label>Manual</label>
+              <input
+                name="transmission"
+                onChange={formik.handleChange}
+                type="radio"
+                value="manual"
+                defaultChecked={formik.values.transmission === 'manual' ? 'checked' : null}
+              />
+            </div>
+            <div className="form-page__container-fieldset-automatic">
+              <label>Automatic</label>
+              <input
+                name="transmission"
+                onChange={formik.handleChange}
+                type="radio"
+                value="automatic"
+                defaultChecked={formik.values.transmission === 'automatic' ? 'checked' : null}
+              />
+            </div>
+          </fieldset>
+
+          <button className="button is-primary" type="submit">Save car</button>
+        </form>
+
+      </main>
     </>
   );
 }
