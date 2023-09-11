@@ -1,11 +1,11 @@
 const API_HOST = import.meta.env.VITE_API_HOST;
 
 function getCars() {
-  return fetch(`${API_HOST}/`).then((res) => res.json());
+  return fetch(`${API_HOST}/cars`).then((res) => res.json());
 }
 
 function getCar(id) {
-  return fetch(`${API_HOST}/car/${id}`).then((res) => res.json());
+  return fetch(`${API_HOST}/cars/${id}`).then((res) => res.json());
 }
 
 function saveCar(car) {
@@ -29,7 +29,7 @@ function updateCar(car) {
 }
 
 function deleteCar(id) {
-  return fetch(`${API_HOST}/car/${id}`, {
+  return fetch(`${API_HOST}/cars/${id}`, {
     method: 'DELETE',
   });
 }
