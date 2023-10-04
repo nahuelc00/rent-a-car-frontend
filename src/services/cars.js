@@ -8,23 +8,17 @@ function getCar(id) {
   return fetch(`${API_HOST}/cars/${id}`).then((res) => res.json());
 }
 
-function saveCar(car) {
+function saveCar(carFormData) {
   return fetch(`${API_HOST}/cars`, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
     method: 'POST',
-    body: JSON.stringify(car),
+    body: carFormData,
   });
 }
 
-function updateCar(car) {
+function updateCar(carFormData) {
   return fetch(`${API_HOST}/cars`, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
     method: 'PUT',
-    body: JSON.stringify(car),
+    body: carFormData,
   });
 }
 
