@@ -20,12 +20,22 @@ function validateForm(values) {
   let quantityErrors = 0;
   for (const key in values) {
     const value = values[key];
-
     if (value === '') quantityErrors += 1;
   }
 
   if (quantityErrors === 0) return true;
   if (quantityErrors !== 0) return false;
+}
+
+function buildFormData(formValues) {
+  const formData = new FormData();
+
+  for (const key in formValues) {
+    const value = formValues[key];
+    formData.append(key, value);
+  }
+
+  return formData;
 }
 
 function Form({ isUpdate }) {
@@ -44,6 +54,7 @@ function Form({ isUpdate }) {
       kilometers: '',
       airConditioning: '',
       transmission: '',
+      file: '',
     },
     onSubmit: (carValues) => {
       const isFormValid = validateForm(carValues);
@@ -67,16 +78,19 @@ function Form({ isUpdate }) {
           kilometers: car.kms,
           airConditioning: car.airConditioning,
           transmission: car.transmission,
+          file: car.imageUrl,
         });
       });
     }
   }, [getCar]);
 
   function handleSaveInModal() {
+    const carFormData = buildFormData(formik.values);
+
     if (isUpdate) {
-      handleUpdateCar(formik.values);
+      handleUpdateCar(carFormData);
     } else {
-      handleSaveCar(formik.values);
+      handleSaveCar(carFormData);
     }
   }
 
@@ -228,6 +242,26 @@ function Form({ isUpdate }) {
                 defaultChecked={formik.values.transmission === 'automatic' ? 'checked' : null}
               />
             </div>
+          </fieldset>
+          <fieldset className="file mb-5">
+            <label className="file-label">
+              <input
+                className="file-input"
+                type="file"
+                name="resume"
+                onChange={(e) => {
+                  formik.setFieldValue('file', e.target.files[0]);
+                }}
+              />
+              <span className="file-cta">
+                <span className="file-icon">
+                  <i className="fas fa-upload" />
+                </span>
+                <span className="file-label">
+                  Choose a image…
+                </span>
+              </span>
+            </label>
           </fieldset>
 
           <button className="button is-primary" type="submit">Save car</button>
