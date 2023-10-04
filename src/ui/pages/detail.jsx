@@ -48,8 +48,12 @@ function Detail() {
               <CarInformationColumn description="Transmission" value={car.transmission} />
             </div>
           </div>
-
         </div>
+
+        <div className="is-flex">
+          <img className="mt-6 mb-0 mx-auto" src={car.imageUrl} alt="" />
+        </div>
+
       </main>
     </>
   );
