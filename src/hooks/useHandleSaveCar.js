@@ -5,10 +5,10 @@ function useHandleSaveCar() {
   const [isSaving, setIsSaving] = useState(false);
   const [endOfSave, setEndOfSave] = useState(false);
 
-  function handleSaveCar(carToSave) {
+  function handleSaveCar(carToSaveFormData) {
     setIsSaving(true);
 
-    saveCar(carToSave).then(() => {
+    saveCar(carToSaveFormData).then(() => {
       setIsSaving(false);
       setEndOfSave(true);
     });
