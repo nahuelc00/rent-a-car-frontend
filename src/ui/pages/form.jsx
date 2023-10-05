@@ -78,7 +78,7 @@ function Form({ isUpdate }) {
           kilometers: car.kms,
           airConditioning: car.airConditioning,
           transmission: car.transmission,
-          file: car.imageUrl,
+          file: '',
         });
       });
     }
@@ -243,7 +243,8 @@ function Form({ isUpdate }) {
               />
             </div>
           </fieldset>
-          <fieldset className="file mb-5">
+
+          <fieldset className={formik.values.file ? 'file mb-5' : 'file is-danger mb-5'}>
             <label className="file-label">
               <input
                 className="file-input"
