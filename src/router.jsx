@@ -4,11 +4,16 @@ import { Root } from './ui/pages/root';
 import { Form } from './ui/pages/form';
 import { Detail } from './ui/pages/detail';
 import { Delete } from './ui/pages/delete';
+import { RegisterForm } from './ui/pages/registerForm';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+  },
+  {
+    path: 'register',
+    element: <RegisterForm />,
   },
   {
     path: 'form/add',
