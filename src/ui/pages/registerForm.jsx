@@ -52,7 +52,6 @@ function RegisterForm() {
       <h1 className="title">Registration</h1>
       <form onSubmit={formik.handleSubmit} className="register-form is-flex is-flex-direction-column is-justify-content-center">
 
-        {/* Firstname */}
         <div className="field">
           <label className="label">Firstname</label>
           <div className="control has-icons-left has-icons-right">
@@ -75,7 +74,6 @@ function RegisterForm() {
 
         </div>
 
-        {/* Lastname */ }
         <div className="field">
           <label className="label">Lastname</label>
           <div className="control has-icons-left has-icons-right">
@@ -96,7 +94,6 @@ function RegisterForm() {
           {!formik.values.lastname && <p className="help is-danger">This lastname is invalid</p>}
         </div>
 
-        {/* Email */ }
         <div className="field">
           <label className="label">Email</label>
           <div className="control has-icons-left has-icons-right">
@@ -118,7 +115,6 @@ function RegisterForm() {
           {!validator.isEmail(formik.values.email) && <p className="help is-danger">This email is invalid</p>}
         </div>
 
-        {/* Password */ }
         <div className="field">
           <label className="label">Password</label>
           <div className="control has-icons-left has-icons-right">
