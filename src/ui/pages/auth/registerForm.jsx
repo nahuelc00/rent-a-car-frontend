@@ -1,18 +1,8 @@
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useFormik } from 'formik';
-import validator from 'validator';
 import React from 'react';
-
-function validatePassword(password) {
-  const isPasswordSecure = validator.isStrongPassword(password);
-  return isPasswordSecure;
-}
-
-function validateEmail(email) {
-  const isEmail = validator.isEmail(email);
-  return isEmail;
-}
+import { validateEmail, validatePassword } from './utilities';
 
 function validateForm(values) {
   const {
@@ -40,9 +30,14 @@ function RegisterForm() {
     onSubmit: (values) => {
       const isFormValid = validateForm(values);
       if (isFormValid) {
-        console.log('Submit form');
+        console.log('The data of register are: ', {
+          name: values.firstname,
+          lastname: values.lastname,
+          email: values.email,
+          password: values.password,
+        });
       } else {
-        console.log('Not Submit form');
+        console.log('Data of register incorrect');
       }
     },
   });
@@ -50,7 +45,7 @@ function RegisterForm() {
   return (
     <>
       <h1 className="title">Registration</h1>
-      <form onSubmit={formik.handleSubmit} className="register-form is-flex is-flex-direction-column is-justify-content-center">
+      <form onSubmit={formik.handleSubmit}>
 
         <div className="field">
           <label className="label">Firstname</label>
@@ -98,7 +93,7 @@ function RegisterForm() {
           <label className="label">Email</label>
           <div className="control has-icons-left has-icons-right">
             <input
-              className={validator.isEmail(formik.values.email) ? 'input is-success' : 'input is-danger'}
+              className={validateEmail(formik.values.email) ? 'input is-success' : 'input is-danger'}
               name="email"
               type="email"
               placeholder="Email"
@@ -112,10 +107,10 @@ function RegisterForm() {
               <i className="fas fa-exclamation-triangle" />
             </span>
           </div>
-          {!validator.isEmail(formik.values.email) && <p className="help is-danger">This email is invalid</p>}
+          {!validateEmail(formik.values.email) && <p className="help is-danger">This email is invalid</p>}
         </div>
 
-        <div className="field">
+        <div className="field mb-5">
           <label className="label">Password</label>
           <div className="control has-icons-left has-icons-right">
             <input
@@ -139,7 +134,7 @@ function RegisterForm() {
 
         <div className="field is-grouped">
           <div className="control">
-            <button type="submit" className="button is-link">Sign in</button>
+            <button type="submit" className="button is-link">Sign up</button>
           </div>
         </div>
       </form>
