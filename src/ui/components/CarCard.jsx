@@ -10,10 +10,10 @@ function CarCard({
       <h1 className="subtitle mb-3 has-text-weight-bold">{ brand }</h1>
       <p className="mb-1">{`${passengers} passengers`}</p>
       <p className="mb-2">{`${kms} kms`}</p>
-      <Link to={`detail/${id}`}>Detail</Link>
+      <Link to={`car/detail/${id}`}>Detail</Link>
       <div>
-        <Link to={`form/edit/${id}`} className="mr-1">Edit</Link>
-        <Link to={`delete/${id}`}>Delete</Link>
+        <Link to={`car/edit/${id}`} className="mr-1">Edit</Link>
+        <Link to={`car/delete/${id}`}>Delete</Link>
       </div>
     </div>
   );

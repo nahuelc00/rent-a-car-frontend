@@ -1,10 +1,11 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { Root } from './ui/pages/root';
-import { Form } from './ui/pages/form';
+import { CarForm } from './ui/pages/carForm';
 import { Detail } from './ui/pages/detail';
 import { Delete } from './ui/pages/delete';
-import { RegisterForm } from './ui/pages/registerForm';
+import { RegisterForm } from './ui/pages/auth/registerForm';
+import { LoginForm } from './ui/pages/auth/loginForm';
 
 const router = createBrowserRouter([
   {
@@ -16,19 +17,23 @@ const router = createBrowserRouter([
     element: <RegisterForm />,
   },
   {
-    path: 'form/add',
-    element: <Form />,
+    path: 'login',
+    element: <LoginForm />,
   },
   {
-    path: 'detail/:id',
+    path: 'car/add',
+    element: <CarForm />,
+  },
+  {
+    path: 'car/detail/:id',
     element: <Detail />,
   },
   {
-    path: 'form/edit/:id',
-    element: <Form isUpdate />,
+    path: 'car/edit/:id',
+    element: <CarForm isUpdate />,
   },
   {
-    path: 'delete/:id',
+    path: 'car/delete/:id',
     element: <Delete />,
   },
 

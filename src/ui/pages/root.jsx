@@ -23,7 +23,7 @@ function Root() {
         <h1 className="title mb-4 has-text-centered">Rent a car</h1>
       </header>
       <main>
-        <Link to="form/add" className="button is-info mb-6 has-text-weight-medium">Add car</Link>
+        <Link to="car/add" className="button is-info mb-6 has-text-weight-medium">Add car</Link>
         <div className="root-page__container-cards-car">
           { cars.map(({
             id, brand, passengers, kms,
