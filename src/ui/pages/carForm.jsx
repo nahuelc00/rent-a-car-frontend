@@ -38,7 +38,7 @@ function buildFormData(formValues) {
   return formData;
 }
 
-function Form({ isUpdate }) {
+function CarForm({ isUpdate }) {
   const [displayModalSave, setDisplayModalSave] = useState(false);
   const { handleSaveCar, isSaving, endOfSave } = useHandleSaveCar();
   const { handleUpdateCar, isUpdating, endOfUpdating } = useHandleUpdateCar();
@@ -273,11 +273,11 @@ function Form({ isUpdate }) {
   );
 }
 
-Form.propTypes = {
+CarForm.propTypes = {
   isUpdate: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool,
   ]),
 };
 
-export { Form };
+export { CarForm };
