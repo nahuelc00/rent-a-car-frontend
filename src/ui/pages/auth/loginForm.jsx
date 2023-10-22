@@ -79,12 +79,13 @@ function LoginForm() {
           )}
         </div>
 
-        <div className="field is-grouped">
+        <div className="field is-grouped is-align-items-center">
           <div className="control">
             <button type="submit" className="button is-link">Sign in</button>
           </div>
+          <span>or</span>
+          <button type="submit" className="button is-ghost">Register</button>
         </div>
-
       </form>
     </>
   );
