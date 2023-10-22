@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { useFormik } from 'formik';
+import { Link } from 'react-router-dom';
 import { validateEmail, validatePassword } from './utilities';
 
 function validateForm(values) {
@@ -84,7 +85,7 @@ function LoginForm() {
             <button type="submit" className="button is-link">Sign in</button>
           </div>
           <span>or</span>
-          <button type="submit" className="button is-ghost">Register</button>
+          <Link to="/register" className="button is-ghost">Register</Link>
         </div>
       </form>
     </>
