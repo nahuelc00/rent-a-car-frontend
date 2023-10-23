@@ -1,13 +1,15 @@
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useFormik } from 'formik';
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { validateEmail, validatePassword } from './utilities';
+import { registerUser } from '../../../services/users';
 
-function validateForm(values) {
+function validateForm(userData) {
   const {
     firstname, lastname, email, password,
-  } = values;
+  } = userData;
 
   const hasEmptyValues = firstname === '' || lastname === '' || email === '' || password === '';
 
@@ -19,7 +21,20 @@ function validateForm(values) {
   if (isEmail && isPasswordSecure) return true;
 }
 
+function assignInputEmailClassname(emailValue, isEmailExistent) {
+  const isEmail = validateEmail(emailValue);
+
+  if (isEmailExistent) return 'input is-danger';
+
+  if (isEmail) return 'input is-success';
+
+  return 'input is-danger';
+}
+
 function RegisterForm() {
+  const navigate = useNavigate();
+  const [isEmailExistent, setIsEmailExistent] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       firstname: '',
@@ -27,17 +42,14 @@ function RegisterForm() {
       email: '',
       password: '',
     },
-    onSubmit: (values) => {
-      const isFormValid = validateForm(values);
+    onSubmit: async (userData) => {
+      const isFormValid = validateForm(userData);
       if (isFormValid) {
-        console.log('The data of register are: ', {
-          name: values.firstname,
-          lastname: values.lastname,
-          email: values.email,
-          password: values.password,
-        });
-      } else {
-        console.log('Data of register incorrect');
+        const resultOfRegister = await registerUser(userData);
+
+        if (resultOfRegister.message === 'This email already exists') setIsEmailExistent(true);
+
+        if (resultOfRegister.registered) navigate('/login');
       }
     },
   });
@@ -93,11 +105,14 @@ function RegisterForm() {
           <label className="label">Email</label>
           <div className="control has-icons-left has-icons-right">
             <input
-              className={validateEmail(formik.values.email) ? 'input is-success' : 'input is-danger'}
+              className={assignInputEmailClassname(formik.values.email, isEmailExistent)}
               name="email"
               type="email"
               placeholder="Email"
-              onChange={formik.handleChange}
+              onChange={(e) => {
+                setIsEmailExistent(false);
+                formik.handleChange(e);
+              }}
             />
 
             <span className="icon is-small is-left">
@@ -107,7 +122,8 @@ function RegisterForm() {
               <i className="fas fa-exclamation-triangle" />
             </span>
           </div>
-          {!validateEmail(formik.values.email) && <p className="help is-danger">This email is invalid</p>}
+          { !validateEmail(formik.values.email) && <p className="help is-danger">This email is invalid</p> }
+          {isEmailExistent && <p className="help is-danger">This email already exists</p>}
         </div>
 
         <div className="field mb-5">
