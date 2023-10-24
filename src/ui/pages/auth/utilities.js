@@ -10,4 +10,11 @@ function validateEmail(email) {
   return isEmail;
 }
 
-export { validateEmail, validatePassword };
+function capitalizeFirstLetterAndRestInUpperCase(string) {
+  const firstLetterCapitalized = string.charAt(0).toUpperCase();
+  const restOfWordInLowerCase = string.slice(1).toLowerCase();
+  const completeWord = firstLetterCapitalized + restOfWordInLowerCase;
+  return completeWord;
+}
+
+export { validateEmail, validatePassword, capitalizeFirstLetterAndRestInUpperCase };

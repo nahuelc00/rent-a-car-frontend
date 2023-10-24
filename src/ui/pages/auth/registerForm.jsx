@@ -3,7 +3,7 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { validateEmail, validatePassword } from './utilities';
+import { capitalizeFirstLetterAndRestInUpperCase, validateEmail, validatePassword } from './utilities';
 import { registerUser } from '../../../services/users';
 
 function validateForm(userData) {
@@ -44,8 +44,15 @@ function RegisterForm() {
     },
     onSubmit: async (userData) => {
       const isFormValid = validateForm(userData);
+
       if (isFormValid) {
-        const resultOfRegister = await registerUser(userData);
+        const userDataMapped = {
+          ...userData,
+          firstname: capitalizeFirstLetterAndRestInUpperCase(userData.firstname),
+          lastname: capitalizeFirstLetterAndRestInUpperCase(userData.lastname),
+        };
+
+        const resultOfRegister = await registerUser(userDataMapped);
 
         if (resultOfRegister.message === 'This email already exists') setIsEmailExistent(true);
 
