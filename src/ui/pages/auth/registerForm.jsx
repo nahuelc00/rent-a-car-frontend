@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { capitalizeFirstLetterAndRestInUpperCase, validateEmail, validatePassword } from './utilities';
 import { registerUser } from '../../../services/users';
+import { PageExit } from '../../components/PageExit';
 
 function validateForm(userData) {
   const {
@@ -63,7 +64,8 @@ function RegisterForm() {
 
   return (
     <>
-      <h1 className="title">Registration</h1>
+      <PageExit exitRoute="/" />
+      <h1 className="title mt-5">Registration</h1>
       <form onSubmit={formik.handleSubmit}>
 
         <div className="field">

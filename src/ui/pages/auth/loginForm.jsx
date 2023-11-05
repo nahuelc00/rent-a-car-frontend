@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
 import { validateEmail } from './utilities';
 import { loginUser } from '../../../services/users';
+import { PageExit } from '../../components/PageExit';
 
 function validateForm(values) {
   const { email, password } = values;
@@ -45,7 +46,8 @@ function LoginForm() {
 
   return (
     <>
-      <h1 className="title">Login</h1>
+      <PageExit exitRoute="/" />
+      <h1 className="title mt-5">Login</h1>
       <form onSubmit={formik.handleSubmit}>
         <div className="field">
           <label className="label">Email</label>
