@@ -24,6 +24,10 @@
 
 /* Root page */
 
+.menu-burger{
+  top: 60px;
+}
+
 .root-page__container-cards-car {
   display: grid;
   gap: 20px;
