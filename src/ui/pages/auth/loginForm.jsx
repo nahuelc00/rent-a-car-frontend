@@ -1,9 +1,10 @@
 /* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
-import { validateEmail, validatePassword } from './utilities';
+import { validateEmail } from './utilities';
+import { loginUser } from '../../../services/users';
 
 function validateForm(values) {
   const { email, password } = values;
@@ -13,12 +14,13 @@ function validateForm(values) {
   if (hasEmptyValues) return false;
 
   const isEmail = validateEmail(email);
-  const isPasswordSecure = validatePassword(password);
 
-  if (isEmail && isPasswordSecure) return true;
+  if (isEmail) return true;
 }
 
 function LoginForm() {
+  const [invalidCredentials, setInvalidCredentials] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -27,9 +29,16 @@ function LoginForm() {
     onSubmit: (values) => {
       const isFormValid = validateForm(values);
       if (isFormValid) {
-        console.log('The data of login are: ', { email: values.email, password: values.password });
-      } else {
-        console.log('Data of login incorrect');
+        const loginData = { email: values.email, password: values.password };
+
+        loginUser(loginData).then((res) => {
+          if (res.statusCode === 401) setInvalidCredentials(true);
+          if (res.token) {
+            console.log('Login successfully');
+            document.cookie = `access_token=${res.token}`;
+            setInvalidCredentials(false);
+          }
+        });
       }
     },
   });
@@ -58,11 +67,11 @@ function LoginForm() {
           {!validateEmail(formik.values.email) && <p className="help is-danger">This email is invalid</p>}
         </div>
 
-        <div className="field mb-5">
+        <div className="field mb-3">
           <label className="label">Password</label>
           <div className="control has-icons-left has-icons-right">
             <input
-              className={validatePassword(formik.values.password) ? 'input is-success' : 'input is-danger'}
+              className="input"
               type="password"
               name="password"
               placeholder="Password"
@@ -72,13 +81,9 @@ function LoginForm() {
               <i className="fas fa-lock" />
             </span>
           </div>
-          {!validatePassword(formik.values.password) && (
-          <p className="help is-danger">
-            This password is invalid.
-            Required min 8 characters: 1 in lower case, 1 in uppercase, 1 number and 1 symbol.
-          </p>
-          )}
         </div>
+
+        {invalidCredentials && (<p className="help is-danger mb-5">Check your email and password</p>)}
 
         <div className="field is-grouped is-align-items-center">
           <div className="control">

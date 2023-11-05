@@ -10,4 +10,13 @@ function registerUser(userData) {
   }).then((res) => res.json());
 }
 
-export { registerUser };
+function loginUser(userData) {
+  return fetch(`${API_HOST}/user/login`, {
+    headers: {
+      'content-type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(userData),
+  }).then((res) => res.json());
+}
+export { registerUser, loginUser };
