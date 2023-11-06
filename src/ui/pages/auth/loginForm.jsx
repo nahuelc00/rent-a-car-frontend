@@ -48,12 +48,12 @@ function LoginForm() {
     <>
       <PageExit exitRoute="/" />
       <h1 className="title mt-5">Login</h1>
-      <form onSubmit={formik.handleSubmit}>
+      <form style={{ maxWidth: '600px' }} onSubmit={formik.handleSubmit}>
         <div className="field">
-          <label className="label">Email</label>
+          <label className="label is-size-4">Email</label>
           <div className="control has-icons-left has-icons-right">
             <input
-              className={validateEmail(formik.values.email) ? 'input is-success' : 'input is-danger'}
+              className={validateEmail(formik.values.email) ? 'input is-success is-medium' : 'input is-danger is-medium'}
               type="text"
               name="email"
               placeholder="Email"
@@ -66,14 +66,14 @@ function LoginForm() {
               <i className="fas fa-check" />
             </span>
           </div>
-          {!validateEmail(formik.values.email) && <p className="help is-danger">This email is invalid</p>}
+          {!validateEmail(formik.values.email) && <p className="help is-danger is-size-5">This email is invalid</p>}
         </div>
 
-        <div className="field mb-3">
-          <label className="label">Password</label>
+        <div className="field mb-5">
+          <label className="label is-size-4">Password</label>
           <div className="control has-icons-left has-icons-right">
             <input
-              className="input"
+              className="input is-medium"
               type="password"
               name="password"
               placeholder="Password"
@@ -85,14 +85,14 @@ function LoginForm() {
           </div>
         </div>
 
-        {invalidCredentials && (<p className="help is-danger mb-5">Check your email and password</p>)}
+        {invalidCredentials && (<p className="help is-danger mb-5 is-size-5">Check your email and password</p>)}
 
         <div className="field is-grouped is-align-items-center">
           <div className="control">
-            <button type="submit" className="button is-link">Sign in</button>
+            <button type="submit" className="button is-link is-medium">Sign in</button>
           </div>
-          <span>or</span>
-          <Link to="/register" className="button is-ghost">Register</Link>
+          <span className="is-size-5">or</span>
+          <Link to="/register" className="button is-ghost is-medium">Register</Link>
         </div>
       </form>
     </>

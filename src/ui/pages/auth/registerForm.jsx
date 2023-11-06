@@ -25,11 +25,11 @@ function validateForm(userData) {
 function assignInputEmailClassname(emailValue, isEmailExistent) {
   const isEmail = validateEmail(emailValue);
 
-  if (isEmailExistent) return 'input is-danger';
+  if (isEmailExistent) return 'input is-danger is-medium';
 
-  if (isEmail) return 'input is-success';
+  if (isEmail) return 'input is-success is-medium';
 
-  return 'input is-danger';
+  return 'input is-medium';
 }
 
 function RegisterForm() {
@@ -66,13 +66,13 @@ function RegisterForm() {
     <>
       <PageExit exitRoute="/" />
       <h1 className="title mt-5">Registration</h1>
-      <form onSubmit={formik.handleSubmit}>
+      <form style={{ maxWidth: '600px' }} onSubmit={formik.handleSubmit}>
 
         <div className="field">
-          <label className="label">Firstname</label>
+          <label className="label is-size-4">Firstname</label>
           <div className="control has-icons-left has-icons-right">
             <input
-              className={formik.values.firstname ? 'input is-success' : 'input is-danger'}
+              className={formik.values.firstname ? 'input is-success is-medium' : 'input is-danger is-medium'}
               type="text"
               name="firstname"
               placeholder="Firstname"
@@ -86,15 +86,15 @@ function RegisterForm() {
               <i className="fas fa-check" />
             </span>
           </div>
-          {!formik.values.firstname && <p className="help is-danger">This firstname is invalid</p> }
+          {!formik.values.firstname && <p className="help is-danger is-size-5">This firstname is invalid</p> }
 
         </div>
 
         <div className="field">
-          <label className="label">Lastname</label>
+          <label className="label is-size-4">Lastname</label>
           <div className="control has-icons-left has-icons-right">
             <input
-              className={formik.values.lastname ? 'input is-success' : 'input is-danger'}
+              className={formik.values.lastname ? 'input is-success is-medium' : 'input is-danger is-medium'}
               name="lastname"
               type="text"
               placeholder="Lastname"
@@ -107,11 +107,11 @@ function RegisterForm() {
               <i className="fas fa-check" />
             </span>
           </div>
-          {!formik.values.lastname && <p className="help is-danger">This lastname is invalid</p>}
+          {!formik.values.lastname && <p className="help is-danger is-size-5">This lastname is invalid</p>}
         </div>
 
         <div className="field">
-          <label className="label">Email</label>
+          <label className="label is-size-4">Email</label>
           <div className="control has-icons-left has-icons-right">
             <input
               className={assignInputEmailClassname(formik.values.email, isEmailExistent)}
@@ -131,15 +131,15 @@ function RegisterForm() {
               <i className="fas fa-exclamation-triangle" />
             </span>
           </div>
-          { !validateEmail(formik.values.email) && <p className="help is-danger">This email is invalid</p> }
-          {isEmailExistent && <p className="help is-danger">This email already exists</p>}
+          { !validateEmail(formik.values.email) && <p className="help is-danger is-size-5">This email is invalid</p> }
+          {isEmailExistent && <p className="help is-danger is-size-5">This email already exists</p>}
         </div>
 
         <div className="field mb-5">
-          <label className="label">Password</label>
+          <label className="label is-size-4">Password</label>
           <div className="control has-icons-left has-icons-right">
             <input
-              className={validatePassword(formik.values.password) ? 'input is-success' : 'input is-danger'}
+              className={validatePassword(formik.values.password) ? 'input is-success is-medium' : 'input is-danger is-medium'}
               type="password"
               name="password"
               placeholder="Password"
@@ -150,7 +150,7 @@ function RegisterForm() {
             </span>
           </div>
           {!validatePassword(formik.values.password) && (
-          <p className="help is-danger">
+          <p className="help is-danger is-size-5">
             This password is invalid.
             Required min 8 characters: 1 in lower case, 1 in uppercase, 1 number and 1 symbol.
           </p>
@@ -159,7 +159,7 @@ function RegisterForm() {
 
         <div className="field is-grouped">
           <div className="control">
-            <button type="submit" className="button is-link">Sign up</button>
+            <button type="submit" className="button is-link is-medium">Sign up</button>
           </div>
         </div>
       </form>
