@@ -1,3 +1,7 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+
 #app {
   margin: 20px;
 }
@@ -9,24 +13,79 @@
 }
 @media (min-width: 769px) {
   #app {
-    max-width: 700px;
+    max-width: initial;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
 
-/* Car Card */
+/* Header */
 
-.card-car:not(:last-child) {
-  margin-bottom: 0;
+.menu-burger {
+  top: 60px;
 }
-.card-car {
-  width: 250px;
+
+/* Welcome page */
+
+.welcome-page__title {
+  font-size: 80px;
+  color: #1c6b84;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.welcome_page__subtitle {
+  color: #8b8f8f;
+  font-size: 30px;
+}
+
+.welcome-page__section-line {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  height: 2px;
+  width: 100%;
+}
+
+.welcome-page__introduction {
+  font-size: 20px;
+  margin: 60px 0;
+}
+@media (min-width: 1024px) {
+  .welcome-page__introduction {
+    font-size: 30px;
+  }
+}
+
+.welcome-page__characteristics-container {
+  margin: 50px 0;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 50px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 769px) {
+  .welcome-page__characteristics-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1280px) {
+  .welcome-page__characteristics-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.welcome-page__characteristic {
+  background-color: #d9d9d9;
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 10px;
+}
+@media (min-width: 1024px) {
+  .welcome-page__characteristic {
+    font-size: 30px;
+  }
 }
 
 /* Root page */
-
-.menu-burger{
-  top: 60px;
-}
 
 .root-page__container-cards-car {
   display: grid;
@@ -39,6 +98,15 @@
     justify-content: space-between;
     flex-wrap: wrap;
   }
+}
+
+/* Car Card */
+
+.card-car:not(:last-child) {
+  margin-bottom: 0;
+}
+.card-car {
+  width: 250px;
 }
 
 /* Form page */

@@ -1,16 +1,16 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import { Root } from './ui/pages/root';
 import { CarForm } from './ui/pages/carForm';
 import { Detail } from './ui/pages/detail';
 import { Delete } from './ui/pages/delete';
 import { RegisterForm } from './ui/pages/auth/registerForm';
 import { LoginForm } from './ui/pages/auth/loginForm';
+import { Welcome } from './ui/pages/welcome';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
+    element: <Welcome />,
   },
   {
     path: 'register',
