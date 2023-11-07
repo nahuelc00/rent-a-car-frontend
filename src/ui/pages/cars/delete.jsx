@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ActionModal } from '../components/ActionModal';
-import { InformationModal } from '../components/InformationModal';
-import { Loader } from '../components/Loader';
-import { useHandleDeleteCar } from '../../hooks/cars/useHandleDeleteCar';
+import { ActionModal } from '../../components/ActionModal';
+import { InformationModal } from '../../components/InformationModal';
+import { Loader } from '../../components/Loader';
+import { useHandleDeleteCar } from '../../../hooks/cars/useHandleDeleteCar';
 
 function Delete() {
   const { id } = useParams();

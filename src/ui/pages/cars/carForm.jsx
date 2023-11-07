@@ -8,13 +8,13 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { useParams } from 'react-router-dom';
-import { ActionModal } from '../components/ActionModal';
-import { PageExit } from '../components/PageExit';
-import { useHandleSaveCar } from '../../hooks/cars/useHandleSaveCar';
-import { Loader } from '../components/Loader';
-import { InformationModal } from '../components/InformationModal';
-import { getCar } from '../../services/cars';
-import { useHandleUpdateCar } from '../../hooks/cars/useHandleUpdateCar';
+import { ActionModal } from '../../components/ActionModal';
+import { PageExit } from '../../components/PageExit';
+import { useHandleSaveCar } from '../../../hooks/cars/useHandleSaveCar';
+import { Loader } from '../../components/Loader';
+import { InformationModal } from '../../components/InformationModal';
+import { getCar } from '../../../services/cars';
+import { useHandleUpdateCar } from '../../../hooks/cars/useHandleUpdateCar';
 
 function validateForm(values) {
   let quantityErrors = 0;

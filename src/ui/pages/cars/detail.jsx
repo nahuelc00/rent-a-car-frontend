@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useGetCar } from '../../hooks/cars/useGetCar';
-import { Loader } from '../components/Loader';
-import { CarInformationColumn } from '../components/CarInformationColumn';
-import { PageExit } from '../components/PageExit';
+import { useGetCar } from '../../../hooks/cars/useGetCar';
+import { Loader } from '../../components/Loader';
+import { CarInformationColumn } from '../../components/CarInformationColumn';
+import { PageExit } from '../../components/PageExit';
 
 function Detail() {
   const { id } = useParams();
