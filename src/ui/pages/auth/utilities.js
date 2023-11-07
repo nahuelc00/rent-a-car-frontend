@@ -17,4 +17,27 @@ function capitalizeFirstLetterAndRestInUpperCase(string) {
   return completeWord;
 }
 
-export { validateEmail, validatePassword, capitalizeFirstLetterAndRestInUpperCase };
+function getAccessToken() {
+  const { cookie } = document;
+  const partsOfCookie = cookie.split(';');
+  let accessToken;
+
+  for (let index = 0; index < partsOfCookie.length; index += 1) {
+    const partOfCookie = partsOfCookie[index];
+    const existAccessToken = partOfCookie.includes('access_token');
+
+    if (existAccessToken) {
+      const accessTokenInCookie = partOfCookie.split('=')[1];
+      accessToken = accessTokenInCookie;
+      break;
+    } else {
+      accessToken = undefined;
+    }
+  }
+
+  return accessToken;
+}
+
+export {
+  validateEmail, validatePassword, capitalizeFirstLetterAndRestInUpperCase, getAccessToken,
+};
