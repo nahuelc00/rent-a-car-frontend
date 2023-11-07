@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useGetCar } from '../../hooks/useGetCar';
+import { useGetCar } from '../../hooks/cars/useGetCar';
 import { Loader } from '../components/Loader';
 import { CarInformationColumn } from '../components/CarInformationColumn';
 import { PageExit } from '../components/PageExit';
