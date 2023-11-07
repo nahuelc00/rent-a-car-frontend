@@ -3,7 +3,7 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { capitalizeFirstLetterAndRestInUpperCase, validateEmail, validatePassword } from './utilities';
+import { capitalizeFirstLetterAndRestInUpperCase, validateEmail, validatePassword } from '../../../utilities';
 import { registerUser } from '../../../services/users';
 import { PageExit } from '../../components/PageExit';
 

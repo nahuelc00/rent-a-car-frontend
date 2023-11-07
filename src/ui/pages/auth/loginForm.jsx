@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
-import { validateEmail } from './utilities';
+import { validateEmail } from '../../../utilities';
 import { loginUser } from '../../../services/users';
 import { PageExit } from '../../components/PageExit';
 
