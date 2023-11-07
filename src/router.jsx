@@ -1,8 +1,8 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import { CarForm } from './ui/pages/carForm';
-import { Detail } from './ui/pages/detail';
-import { Delete } from './ui/pages/delete';
+import { CarForm } from './ui/pages/cars/carForm';
+import { Detail } from './ui/pages/cars/detail';
+import { Delete } from './ui/pages/cars/delete';
 import { RegisterForm } from './ui/pages/auth/registerForm';
 import { LoginForm } from './ui/pages/auth/loginForm';
 import { Welcome } from './ui/pages/welcome';
