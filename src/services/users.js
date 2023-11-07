@@ -19,4 +19,12 @@ function loginUser(userData) {
     body: JSON.stringify(userData),
   }).then((res) => res.json());
 }
-export { registerUser, loginUser };
+
+function getUser(token) {
+  return fetch(`${API_HOST}/user`, {
+    headers: {
+      Authorization: token,
+    },
+  }).then((res) => res.json());
+}
+export { registerUser, loginUser, getUser };
