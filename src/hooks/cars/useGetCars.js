@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 import { useEffect, useState } from 'react';
-import { getCars } from '../services/cars';
+import { getCars } from '../../services/cars';
 
 function useGetCars() {
   const [cars, setCars] = useState([]);

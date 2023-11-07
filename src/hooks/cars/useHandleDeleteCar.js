@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { deleteCar } from '../services/cars';
+import { deleteCar } from '../../services/cars';
 
 function useHandleDeleteCar() {
   const [endOfDelete, setEndOfDelete] = useState(false);
