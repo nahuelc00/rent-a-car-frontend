@@ -19,7 +19,7 @@ function Header() {
         setInitialOfName(firstLetter);
       });
     }
-  }, [getUser, userAccessToken]);
+  }, [getUser]);
 
   function handleClickInMenuBurger() {
     setDisplayMenuBurger(!displayMenuBurger);
