@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { validateEmail } from '../../../utilities';
 import { loginUser } from '../../../services/users';
 import { PageExit } from '../../components/PageExit';
@@ -21,6 +21,7 @@ function validateForm(values) {
 
 function LoginForm() {
   const [invalidCredentials, setInvalidCredentials] = useState(false);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -36,7 +37,7 @@ function LoginForm() {
           if (res.statusCode === 401) setInvalidCredentials(true);
           if (res.token) {
             document.cookie = `access_token=${res.token}`;
-            setInvalidCredentials(false);
+            navigate('/');
           }
         });
       }
