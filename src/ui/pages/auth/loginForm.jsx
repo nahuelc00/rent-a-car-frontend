@@ -35,7 +35,6 @@ function LoginForm() {
         loginUser(loginData).then((res) => {
           if (res.statusCode === 401) setInvalidCredentials(true);
           if (res.token) {
-            console.log('Login successfully');
             document.cookie = `access_token=${res.token}`;
             setInvalidCredentials(false);
           }
