@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react';
@@ -5,9 +6,22 @@ import { Link } from 'react-router-dom';
 import { getAccessToken } from '../../utilities';
 import { getUser } from '../../services/users';
 
+function assignClassnameForBackoffice(token, isAdmin, isMobile, isDesktop) {
+  const notHasToken = token === undefined;
+  const hasTokenAndIsAdmin = token && isAdmin === true;
+  const hasTokenAndNotIsAdmin = token && isAdmin === false;
+
+  if (notHasToken) return 'is-hidden';
+  if (hasTokenAndIsAdmin && isDesktop) return 'navbar-item is-size-5';
+  if (hasTokenAndIsAdmin && isMobile) return '';
+  if (hasTokenAndNotIsAdmin) return 'is-hidden';
+}
+
 function Header() {
   const [displayMenuBurger, setDisplayMenuBurger] = useState(false);
   const [initialOfName, setInitialOfName] = useState('');
+  const [isUserAdmin, setIsUserAdmin] = useState(false);
+
   const userAccessToken = getAccessToken();
 
   useEffect(() => {
@@ -15,6 +29,7 @@ function Header() {
 
     if (isUserLogged) {
       getUser(userAccessToken).then((user) => {
+        if (user.roles.includes('admin')) setIsUserAdmin(true);
         const firstLetter = user.firstname.charAt(0);
         setInitialOfName(firstLetter);
       });
@@ -49,6 +64,11 @@ function Header() {
               <li className={!userAccessToken ? 'is-hidden' : ''}>
                 <Link to="/">Dashboard</Link>
               </li>
+              <li
+                className={assignClassnameForBackoffice(userAccessToken, isUserAdmin, true, false)}
+              >
+                <Link to="/">Backoffice</Link>
+              </li>
             </ul>
 
           </div>
@@ -70,6 +90,9 @@ function Header() {
             </div>
             <Link to="/" className={userAccessToken ? 'navbar-item is-size-5' : 'is-hidden'}>
               Dashboard
+            </Link>
+            <Link to="/" className={assignClassnameForBackoffice(userAccessToken, isUserAdmin, false, true)}>
+              Backoffice
             </Link>
             <div
               style={{
