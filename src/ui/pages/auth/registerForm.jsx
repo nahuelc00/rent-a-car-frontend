@@ -29,7 +29,7 @@ function assignInputEmailClassname(emailValue, isEmailExistent) {
 
   if (isEmail) return 'input is-success is-medium';
 
-  return 'input is-medium';
+  return 'input is-danger is-medium';
 }
 
 function RegisterForm() {
