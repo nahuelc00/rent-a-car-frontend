@@ -67,7 +67,7 @@ function Header() {
               <li
                 className={assignClassnameForBackoffice(userAccessToken, isUserAdmin, true, false)}
               >
-                <Link to="/">Backoffice</Link>
+                <Link to="/backoffice">Backoffice</Link>
               </li>
             </ul>
 
