@@ -91,7 +91,7 @@ function Header() {
             <Link to="/" className={userAccessToken ? 'navbar-item is-size-5' : 'is-hidden'}>
               Dashboard
             </Link>
-            <Link to="/" className={assignClassnameForBackoffice(userAccessToken, isUserAdmin, false, true)}>
+            <Link to="/backoffice" className={assignClassnameForBackoffice(userAccessToken, isUserAdmin, false, true)}>
               Backoffice
             </Link>
             <div

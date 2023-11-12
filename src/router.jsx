@@ -6,6 +6,7 @@ import { Delete } from './ui/pages/cars/delete';
 import { RegisterForm } from './ui/pages/auth/registerForm';
 import { LoginForm } from './ui/pages/auth/loginForm';
 import { Welcome } from './ui/pages/welcome';
+import { ClientForm } from './ui/pages/backoffice/clientForm';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: 'car/delete/:id',
     element: <Delete />,
+  },
+  {
+    path: 'backoffice',
+    element: <ClientForm />,
   },
 
 ]);
