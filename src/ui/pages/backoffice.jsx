@@ -14,15 +14,13 @@ function Backoffice() {
     const accessToken = getAccessToken();
     getUser(accessToken).then((user) => {
       const isAdmin = user.roles.includes('admin');
+
       if (isAdmin) {
         setUserFirstname(user.firstname);
         setIsUserAdmin(true);
-        setIsLoading(false);
       }
 
-      if (!isAdmin) {
-        setIsLoading(false);
-      }
+      setIsLoading(false);
     });
   }, []);
 
