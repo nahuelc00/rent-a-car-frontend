@@ -84,7 +84,7 @@ function ClientForm() {
       )}
       <form className="client-form" onSubmit={formik.handleSubmit}>
 
-        <div className="field">
+        <div style={{ height: '133px' }} className="field">
           <label className="label is-size-4">Firstname</label>
           <div className="control has-icons-left has-icons-right">
             <input
@@ -105,7 +105,7 @@ function ClientForm() {
 
         </div>
 
-        <div className="field">
+        <div style={{ height: '133px' }} className="field">
           <label className="label is-size-4">Lastname</label>
           <div className="control has-icons-left has-icons-right">
             <input
@@ -125,7 +125,7 @@ function ClientForm() {
           {!formik.values.lastname && <p className="help is-danger is-size-5">This lastname is invalid</p>}
         </div>
 
-        <div className="field">
+        <div style={{ height: '133px' }} className="field">
           <label className="label is-size-4">Email</label>
           <div className="control has-icons-left has-icons-right">
             <input
@@ -150,7 +150,7 @@ function ClientForm() {
           {isEmailExistent && <p className="help is-danger is-size-5">This email already exists</p>}
         </div>
 
-        <div className="field">
+        <div style={{ height: '133px' }} className="field">
           <label className="label is-size-4">Document type</label>
           <div className="select is-medium">
             <select defaultValue="default" name="documentType" onChange={formik.handleChange}>
@@ -162,7 +162,7 @@ function ClientForm() {
 
         </div>
 
-        <div className="field">
+        <div style={{ height: '133px' }} className="field">
           <label className="label is-size-4">Document number</label>
           <div className="control has-icons-left has-icons-right">
             <input
@@ -182,7 +182,7 @@ function ClientForm() {
           {!formik.values.documentNumber && <p className="help is-danger is-size-5">This document number is invalid</p> }
         </div>
 
-        <div className="field">
+        <div style={{ height: '133px' }} className="field">
           <label className="label is-size-4">Nationality</label>
           <div className="control has-icons-left has-icons-right">
             <input
@@ -202,7 +202,7 @@ function ClientForm() {
           {!formik.values.nationality && <p className="help is-danger is-size-5">This nationality is invalid</p>}
         </div>
 
-        <div className="field">
+        <div style={{ height: '133px' }} className="field">
           <label className="label is-size-4">Phone</label>
           <div className="control has-icons-left has-icons-right">
             <input
@@ -222,7 +222,7 @@ function ClientForm() {
           {!formik.values.phone && <p className="help is-danger is-size-5">This phone is invalid</p>}
         </div>
 
-        <div className="field">
+        <div style={{ height: '133px' }} className="field">
           <label className="label is-size-4">Address</label>
           <div className="control has-icons-left has-icons-right">
             <input
@@ -242,7 +242,7 @@ function ClientForm() {
           {!formik.values.address && <p className="help is-danger is-size-5">This address is invalid</p>}
         </div>
 
-        <div className="field">
+        <div style={{ height: '133px' }} className="field">
           <label className="label is-size-4">Date of birth</label>
           <div className="control has-icons-left has-icons-right">
             <input
@@ -263,7 +263,7 @@ function ClientForm() {
         </div>
 
         <div className="field">
-          <div className="control client-form__register-button">
+          <div style={{ marginTop: '45px', marginLeft: '30px' }} className="control">
             <button type="submit" className="button is-link is-medium">Register</button>
           </div>
         </div>

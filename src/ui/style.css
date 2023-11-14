@@ -86,31 +86,17 @@ body {
   }
 }
 
-/* Root page */
-
-.root-page__container-cards-car {
-  display: grid;
-  gap: 20px;
-  justify-content: center;
-}
+/* Client registration form */
 @media (min-width: 769px) {
-  .root-page__container-cards-car {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  .client-form {
+    max-width: 700px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
 }
 
-/* Car Card */
-
-.card-car:not(:last-child) {
-  margin-bottom: 0;
-}
-.card-car {
-  width: 250px;
-}
-
-/* Form page */
+/* Car form page */
 
 .form-page__fieldset-air-conditioning {
   display: grid;
@@ -159,7 +145,7 @@ body {
   }
 }
 
-/* Detail page */
+/* Detail page car */
 .detail-page__container-columns-car-info {
   display: grid;
   grid-template-columns: 1fr;
