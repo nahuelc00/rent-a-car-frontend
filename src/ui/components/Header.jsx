@@ -6,17 +6,6 @@ import { Link } from 'react-router-dom';
 import { getAccessToken } from '../../utilities';
 import { getUser } from '../../services/users';
 
-function assignClassnameForBackoffice(token, isAdmin, isMobile, isDesktop) {
-  const notHasToken = token === undefined;
-  const hasTokenAndIsAdmin = token && isAdmin === true;
-  const hasTokenAndNotIsAdmin = token && isAdmin === false;
-
-  if (notHasToken) return 'is-hidden';
-  if (hasTokenAndIsAdmin && isDesktop) return 'navbar-item is-size-5';
-  if (hasTokenAndIsAdmin && isMobile) return '';
-  if (hasTokenAndNotIsAdmin) return 'is-hidden';
-}
-
 function Header() {
   const [displayMenuBurger, setDisplayMenuBurger] = useState(false);
   const [initialOfName, setInitialOfName] = useState('');
@@ -55,20 +44,30 @@ function Header() {
               <span aria-hidden="true" />
             </div>
             <ul className={displayMenuBurger ? 'is-relative menu-burger' : 'is-hidden'}>
-              <li className={userAccessToken ? 'is-hidden' : ''}>
-                <Link to="/register">Register</Link>
-              </li>
-              <li className={userAccessToken ? 'is-hidden' : ''}>
-                <Link to="/login">Login</Link>
-              </li>
-              <li className={!userAccessToken ? 'is-hidden' : ''}>
+
+              { !userAccessToken && (
+              <>
+                <li>
+                  <Link to="/register">Register</Link>
+                </li>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+              </>
+              ) }
+
+              { userAccessToken && (
+              <li>
                 <Link to="/">Dashboard</Link>
               </li>
-              <li
-                className={assignClassnameForBackoffice(userAccessToken, isUserAdmin, true, false)}
-              >
+              ) }
+
+              { isUserAdmin && (
+              <li>
                 <Link to="/backoffice">Backoffice</Link>
               </li>
+              ) }
+
             </ul>
 
           </div>
@@ -79,7 +78,9 @@ function Header() {
 
           <div style={{ gap: '20px' }} className="navbar-end">
             <div className="navbar-item">
-              <div className={userAccessToken ? 'is-hidden' : 'buttons'}>
+
+              {!userAccessToken && (
+              <div className="buttons">
                 <Link to="/register" className="button is-primary is-medium">
                   <strong>Sign up</strong>
                 </Link>
@@ -87,21 +88,32 @@ function Header() {
                   Log in
                 </Link>
               </div>
+              )}
             </div>
-            <Link to="/" className={userAccessToken ? 'navbar-item is-size-5' : 'is-hidden'}>
+
+            {userAccessToken && (
+            <Link to="/" className="navbar-item is-size-5">
               Dashboard
             </Link>
-            <Link to="/backoffice" className={assignClassnameForBackoffice(userAccessToken, isUserAdmin, false, true)}>
+            ) }
+
+            {isUserAdmin && (
+            <Link to="/backoffice" className="navbar-item is-size-5">
               Backoffice
             </Link>
+            ) }
+
+            {userAccessToken && (
             <div
               style={{
                 width: '64px', borderRadius: '50px', backgroundColor: '#1c6b84', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
               }}
-              className={userAccessToken ? 'navbar-item is-flex is-justify-content-center' : 'is-hidden'}
+              className="navbar-item is-flex is-justify-content-center"
             >
               <span className="is-size-3 is-clickable has-text-light">{initialOfName}</span>
             </div>
+            )}
+
           </div>
         </div>
       </nav>
