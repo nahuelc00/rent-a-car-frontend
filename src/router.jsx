@@ -6,7 +6,7 @@ import { Delete } from './ui/pages/cars/delete';
 import { RegisterForm } from './ui/pages/auth/registerForm';
 import { LoginForm } from './ui/pages/auth/loginForm';
 import { Welcome } from './ui/pages/welcome';
-import { ClientForm } from './ui/pages/backoffice/clientForm';
+import { Backoffice } from './ui/pages/backoffice';
 
 const router = createBrowserRouter([
   {
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'backoffice',
-    element: <ClientForm />,
+    element: <Backoffice />,
   },
 
 ]);

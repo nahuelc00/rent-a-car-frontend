@@ -2,10 +2,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
-import { capitalizeFirstLetterAndRestInUpperCase, validateEmail } from '../../../utilities';
-import { PageExit } from '../../components/PageExit';
-import { registerClient } from '../../../services/clients';
-import { InformationModal } from '../../components/InformationModal';
+import { capitalizeFirstLetterAndRestInUpperCase, validateEmail } from '../../utilities';
+import { registerClient } from '../../services/clients';
+import { InformationModal } from './InformationModal';
 
 function validateForm(clientData) {
   const {
@@ -83,8 +82,6 @@ function ClientForm() {
         handleExitRoute={() => setDisplayClientRegisteredModal(false)}
       />
       )}
-      <PageExit exitRoute="/" />
-      <h1 className="title mt-5">Client registration</h1>
       <form className="client-form" onSubmit={formik.handleSubmit}>
 
         <div className="field">
