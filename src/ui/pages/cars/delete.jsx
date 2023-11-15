@@ -16,7 +16,7 @@ function Delete() {
   }
 
   function handleCancelDelete() {
-    navigate('/');
+    navigate('/cars');
   }
 
   if (isLoading) {
@@ -29,7 +29,7 @@ function Delete() {
 
   if (endOfDelete) {
     return (
-      <InformationModal title="Car deleted successfully" exitRoute="/" />
+      <InformationModal title="Car deleted successfully" exitRoute="/cars" />
     );
   }
 

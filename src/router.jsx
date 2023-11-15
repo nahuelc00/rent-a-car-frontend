@@ -8,6 +8,7 @@ import { LoginForm } from './ui/pages/auth/loginForm';
 import { Welcome } from './ui/pages/welcome';
 import { Backoffice } from './ui/pages/backoffice';
 import { RegisterClient } from './ui/pages/registerClient';
+import { Cars } from './ui/pages/cars/cars';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: 'login',
     element: <LoginForm />,
+  },
+  {
+    path: 'cars',
+    element: <Cars />,
   },
   {
     path: 'car/add',

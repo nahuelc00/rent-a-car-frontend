@@ -108,7 +108,7 @@ function CarForm({ isUpdate }) {
 
   if (endOfSave || endOfUpdating) {
     return (
-      <InformationModal title="Car saved successfully" exitRoute="/" />
+      <InformationModal title="Car saved successfully" exitRoute="/cars" />
     );
   }
 
@@ -127,7 +127,7 @@ function CarForm({ isUpdate }) {
   return (
     <>
       <header className="mb-5">
-        <PageExit exitRoute="/" />
+        <PageExit exitRoute="/cars" />
       </header>
 
       <main>

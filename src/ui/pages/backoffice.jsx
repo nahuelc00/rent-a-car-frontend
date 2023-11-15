@@ -29,6 +29,7 @@ function Backoffice() {
 
           <div style={{ display: 'grid' }}>
             <Link to="/client/register" className="is-size-4">Register a client</Link>
+            <Link to="/cars" className="is-size-4">Manage dashboard cars</Link>
           </div>
         </main>
       </>

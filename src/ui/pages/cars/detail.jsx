@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetCar } from '../../../hooks/cars/useGetCar';
 import { Loader } from '../../components/Loader';
-import { CarInformationColumn } from '../../components/CarInformationColumn';
+import { CarInformationColumn } from '../../components/cars/CarInformationColumn';
 import { PageExit } from '../../components/PageExit';
 
 function Detail() {
@@ -20,7 +20,7 @@ function Detail() {
   return (
     <>
       <header className="mb-5">
-        <PageExit exitRoute="/" />
+        <PageExit exitRoute="/cars" />
       </header>
 
       <main>
