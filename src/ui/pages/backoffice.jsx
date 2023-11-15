@@ -25,9 +25,10 @@ function Backoffice() {
         </header>
         <main>
           <h1 className="title is-size-2">{ `Hi ${user.firstname}!` }</h1>
-          <div className="is-flex">
-            <h2 className="title">If you want to register a client:</h2>
-            <Link to="/client/register">Click here</Link>
+          <h2 className="title is-size-3">You can:</h2>
+
+          <div style={{ display: 'grid' }}>
+            <Link to="/client/register" className="is-size-4">Register a client</Link>
           </div>
         </main>
       </>
