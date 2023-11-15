@@ -7,6 +7,7 @@ import { RegisterForm } from './ui/pages/auth/registerForm';
 import { LoginForm } from './ui/pages/auth/loginForm';
 import { Welcome } from './ui/pages/welcome';
 import { Backoffice } from './ui/pages/backoffice';
+import { RegisterClient } from './ui/pages/registerClient';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: 'backoffice',
     element: <Backoffice />,
+  },
+  {
+    path: 'client/register',
+    element: <RegisterClient />,
   },
 
 ]);
