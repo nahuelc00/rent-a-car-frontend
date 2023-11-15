@@ -2,6 +2,7 @@ import React from 'react';
 import { ClientForm } from '../components/ClientForm';
 import { Loader } from '../components/Loader';
 import { useGetIfIsUserAdmin } from '../../hooks/client/useGetIfIsUserAdmin';
+import { PageExit } from '../components/PageExit';
 
 function RegisterClient() {
   const { isLoading, isUserAdmin } = useGetIfIsUserAdmin();
@@ -12,7 +13,14 @@ function RegisterClient() {
 
   if (isUserAdmin) {
     return (
-      <ClientForm />
+      <>
+        <header className="mb-5">
+          <PageExit exitRoute="/backoffice" />
+        </header>
+        <main>
+          <ClientForm />
+        </main>
+      </>
     );
   }
 
