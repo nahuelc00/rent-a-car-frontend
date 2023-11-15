@@ -77,19 +77,19 @@ function Header() {
         <div className="navbar-menu">
 
           <div style={{ gap: '20px' }} className="navbar-end">
-            <div className="navbar-item">
 
-              {!userAccessToken && (
-              <div className="buttons">
-                <Link to="/register" className="button is-primary is-medium">
-                  <strong>Sign up</strong>
-                </Link>
-                <Link to="/login" className="button is-light is-medium">
-                  Log in
-                </Link>
+            { !userAccessToken && (
+              <div className="navbar-item">
+                <div className="buttons">
+                  <Link to="/register" className="button is-primary is-medium">
+                    <strong>Sign up</strong>
+                  </Link>
+                  <Link to="/login" className="button is-light is-medium">
+                    Log in
+                  </Link>
+                </div>
               </div>
-              )}
-            </div>
+            )}
 
             {userAccessToken && (
             <Link to="/" className="navbar-item is-size-5">
