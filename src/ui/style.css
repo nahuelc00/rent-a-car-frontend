@@ -87,6 +87,7 @@ body {
 }
 
 /* Client registration form */
+
 @media (min-width: 769px) {
   .client-form {
     max-width: 700px;
@@ -165,4 +166,25 @@ body {
   .detail-page__container-columns-car-info {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+}
+
+/* Cars page */
+
+.cars-page__cars-container {
+  display: grid;
+  justify-content: center;
+  gap: 20px;
+}
+@media (min-width: 769px) {
+  .cars-page__cars-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.cars-page__cars-container .car-card:first-child {
+  margin-bottom: 0;
+}
+
+.car-card {
+  width: 300px;
 }
