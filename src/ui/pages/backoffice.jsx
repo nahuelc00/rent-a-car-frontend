@@ -1,28 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { ClientForm } from '../components/ClientForm';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { PageExit } from '../components/PageExit';
-import { getUser } from '../../services/users';
-import { getAccessToken } from '../../utilities';
 import { Loader } from '../components/Loader';
+import { useGetIfIsUserAdmin } from '../../hooks/client/useGetIfIsUserAdmin';
+import { useGetUser } from '../../hooks/client/useGetUser';
 
 function Backoffice() {
-  const [userFirstname, setUserFirstname] = useState('');
-  const [isUserAdmin, setIsUserAdmin] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const accessToken = getAccessToken();
-    getUser(accessToken).then((user) => {
-      const isAdmin = user.roles.includes('admin');
-
-      if (isAdmin) {
-        setUserFirstname(user.firstname);
-        setIsUserAdmin(true);
-      }
-
-      setIsLoading(false);
-    });
-  }, []);
+  const { isLoading, isUserAdmin } = useGetIfIsUserAdmin();
+  const { user } = useGetUser();
 
   if (isLoading) {
     return (
@@ -39,9 +24,11 @@ function Backoffice() {
           <PageExit exitRoute="/" />
         </header>
         <main>
-          <h1 className="title is-size-2">{`Hi ${userFirstname}!`}</h1>
-          <h2 className="title">Register a client here:</h2>
-          <ClientForm />
+          <h1 className="title is-size-2">{ `Hi ${user.firstname}!` }</h1>
+          <div className="is-flex">
+            <h2 className="title">If you want to register a client:</h2>
+            <Link to="/client/register">Click here</Link>
+          </div>
         </main>
       </>
     );
