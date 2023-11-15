@@ -51,7 +51,7 @@ function Detail() {
         </div>
 
         <div className="is-flex">
-          <img className="mt-6 mb-0 mx-auto" src={car.imageUrl} alt="" />
+          <img style={{ width: '300px', height: '200px' }} className="mt-6 mb-0 mx-auto" src={car.imageUrl} alt="" />
         </div>
 
       </main>
