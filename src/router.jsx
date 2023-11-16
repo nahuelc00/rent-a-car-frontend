@@ -10,6 +10,7 @@ import { Backoffice } from './ui/pages/backoffice';
 import { RegisterClient } from './ui/pages/registerClient';
 import { Cars } from './ui/pages/cars/cars';
 import { Dashboard } from './ui/pages/dashboard';
+import { LogOut } from './ui/pages/auth/logout';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: 'login',
     element: <LoginForm />,
+  },
+  {
+    path: 'logout',
+    element: <LogOut />,
   },
   {
     path: 'cars',

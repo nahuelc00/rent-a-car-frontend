@@ -18,8 +18,8 @@ function Header() {
 
     if (isUserLogged) {
       getUser(userAccessToken).then((user) => {
-        if (user.roles.includes('admin')) setIsUserAdmin(true);
-        const firstLetter = user.firstname.charAt(0);
+        if (user.roles?.includes('admin')) setIsUserAdmin(true);
+        const firstLetter = user.firstname?.charAt(0);
         setInitialOfName(firstLetter);
       });
     }
@@ -57,14 +57,20 @@ function Header() {
               ) }
 
               { userAccessToken && (
-              <li>
-                <Link to="/dashboard">Dashboard</Link>
-              </li>
+                <li>
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
               ) }
 
               { isUserAdmin && (
               <li>
                 <Link to="/backoffice">Backoffice</Link>
+              </li>
+              ) }
+
+              { userAccessToken && (
+              <li>
+                <Link to="/logout">Logout</Link>
               </li>
               ) }
 
