@@ -58,7 +58,7 @@ function Header() {
 
               { userAccessToken && (
               <li>
-                <Link to="/">Dashboard</Link>
+                <Link to="/dashboard">Dashboard</Link>
               </li>
               ) }
 
@@ -92,7 +92,7 @@ function Header() {
             )}
 
             {userAccessToken && (
-            <Link to="/" className="navbar-item is-size-5">
+            <Link to="/dashboard" className="navbar-item is-size-5">
               Dashboard
             </Link>
             ) }

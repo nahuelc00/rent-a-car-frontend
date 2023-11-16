@@ -188,3 +188,20 @@ body {
 .car-card {
   width: 300px;
 }
+
+/* Dashboard page */
+.dashboard-page__cars-container {
+  display: grid;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media (min-width: 769px) {
+  .dashboard-page__cars-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.dashboard-page__cars-container .car-card:first-child {
+  margin-bottom: 0;
+}

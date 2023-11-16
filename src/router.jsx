@@ -9,11 +9,16 @@ import { Welcome } from './ui/pages/welcome';
 import { Backoffice } from './ui/pages/backoffice';
 import { RegisterClient } from './ui/pages/registerClient';
 import { Cars } from './ui/pages/cars/cars';
+import { Dashboard } from './ui/pages/dashboard';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Welcome />,
+  },
+  {
+    path: 'dashboard',
+    element: <Dashboard />,
   },
   {
     path: 'register',
