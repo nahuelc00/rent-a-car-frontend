@@ -36,7 +36,13 @@ function LoginForm() {
         loginUser(loginData).then((res) => {
           if (res.statusCode === 401) setInvalidCredentials(true);
           if (res.token) {
-            document.cookie = `access_token=${res.token}`;
+            const date = new Date();
+            const dateAddingTwoDays = date.getDate() + 2;
+            date.setDate(dateAddingTwoDays);
+
+            const dateForCookie = date.toUTCString();
+
+            document.cookie = `access_token=${res.token};expires=${dateForCookie};`;
             navigate('/');
           }
         });
