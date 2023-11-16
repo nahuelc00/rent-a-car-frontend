@@ -70,7 +70,7 @@ function Header() {
 
               { userAccessToken && (
               <li>
-                <Link to="/logout">Logout</Link>
+                <Link to="/profile">Profile</Link>
               </li>
               ) }
 
@@ -116,7 +116,7 @@ function Header() {
               }}
               className="navbar-item is-flex is-justify-content-center"
             >
-              <span className="is-size-3 is-clickable has-text-light">{initialOfName}</span>
+              <Link className="is-size-3 is-clickable has-text-light" to="/profile">{ initialOfName }</Link>
             </div>
             )}
 

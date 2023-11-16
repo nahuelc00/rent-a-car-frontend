@@ -11,6 +11,7 @@ import { RegisterClient } from './ui/pages/registerClient';
 import { Cars } from './ui/pages/cars/cars';
 import { Dashboard } from './ui/pages/dashboard';
 import { LogOut } from './ui/pages/auth/logout';
+import { Profile } from './ui/pages/profile';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: 'logout',
     element: <LogOut />,
+  },
+  {
+    path: 'profile',
+    element: <Profile />,
   },
   {
     path: 'cars',
