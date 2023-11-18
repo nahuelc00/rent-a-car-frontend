@@ -58,6 +58,8 @@ function CarForm({ isUpdate }) {
       airConditioning: '',
       transmission: '',
       file: '',
+      unitPrice: '',
+      totalPrice: '',
     },
     onSubmit: (carValues) => {
       const isFormValid = validateForm(carValues);
@@ -82,6 +84,8 @@ function CarForm({ isUpdate }) {
           airConditioning: car.airConditioning,
           transmission: car.transmission,
           file: '',
+          unitPrice: car.unitPrice,
+          totalPrice: car.totalPrice,
         });
       });
     }
@@ -180,6 +184,7 @@ function CarForm({ isUpdate }) {
                 className={formik.values.passengers === '' ? 'input is-danger' : 'input is-success'}
               />
             </fieldset>
+
             <fieldset className="mb-2">
               <label className="has-text-weight-semibold">Model</label>
               <input
@@ -190,7 +195,7 @@ function CarForm({ isUpdate }) {
                 className={formik.values.model === '' ? 'input is-danger' : 'input is-success'}
               />
             </fieldset>
-            <fieldset className="mb-4">
+            <fieldset className="mb-2">
               <label className="has-text-weight-semibold">Kilometers</label>
               <input
                 min={1}
@@ -201,6 +206,31 @@ function CarForm({ isUpdate }) {
                 className={formik.values.kilometers === '' ? 'input is-danger' : 'input is-success'}
               />
             </fieldset>
+
+            <fieldset className="mb-2">
+              <label className="has-text-weight-semibold">Unit price</label>
+              <input
+                min={1}
+                type="number"
+                name="unitPrice"
+                value={formik.values.unitPrice}
+                onChange={formik.handleChange}
+                className={formik.values.unitPrice === '' ? 'input is-danger' : 'input is-success'}
+              />
+            </fieldset>
+
+            <fieldset className="mb-4">
+              <label className="has-text-weight-semibold">Total price</label>
+              <input
+                min={1}
+                type="number"
+                name="totalPrice"
+                value={formik.values.totalPrice}
+                onChange={formik.handleChange}
+                className={formik.values.totalPrice === '' ? 'input is-danger' : 'input is-success'}
+              />
+            </fieldset>
+
             <fieldset className="form-page__fieldset-air-conditioning">
               <label className="form-page__label-air-conditioning has-text-weight-semibold">Air Conditioning</label>
               <div className="form-page__container-fieldset-yes">
