@@ -40,9 +40,19 @@ function Detail() {
         </div>
       </div>
 
-      <div className="is-flex">
+      <div className="is-flex mb-4">
         <img style={{ width: '300px', height: '200px' }} className="mt-6 mb-0 mx-auto" src={car.imageUrl} alt="" />
       </div>
+
+      <p className="is-size-5 has-text-centered">
+        <span className="has-text-weight-semibold">{ `$${car.unitPrice}Ars `}</span>
+        per day
+      </p>
+
+      <p className="is-size-5 has-text-centered">
+        <span className="has-text-weight-semibold">{ `$${car.totalPrice}Ars `}</span>
+        kilometers free
+      </p>
 
     </main>
   );
