@@ -37,6 +37,7 @@ function assignInputEmailClassname(emailValue, isEmailExistent) {
 
 function ClientForm() {
   const [isEmailExistent, setIsEmailExistent] = useState(false);
+  const [isDniExistent, setIsDniExistent] = useState(false);
   const [displayClientRegisteredModal, setDisplayClientRegisteredModal] = useState(false);
 
   const formik = useFormik({
@@ -65,9 +66,13 @@ function ClientForm() {
 
         const emailExistent = resultOfRegister.message === 'This email already exists';
 
+        const dniExistent = resultOfRegister.message === 'This document number already exists';
+
         const registerSuccessfully = resultOfRegister.registered;
 
         if (emailExistent) setIsEmailExistent(true);
+
+        if (dniExistent) setIsDniExistent(true);
 
         if (registerSuccessfully) setDisplayClientRegisteredModal(true);
       }
@@ -170,7 +175,10 @@ function ClientForm() {
               type="number"
               name="documentNumber"
               placeholder="Document number"
-              onChange={formik.handleChange}
+              onChange={(e) => {
+                setIsDniExistent(false);
+                formik.handleChange(e);
+              }}
             />
             <span className="icon is-small is-left">
               <i className="fas fa-user" />
@@ -179,7 +187,8 @@ function ClientForm() {
               <i className="fas fa-check" />
             </span>
           </div>
-          {!formik.values.documentNumber && <p className="help is-danger is-size-5">This document number is invalid</p> }
+          { !formik.values.documentNumber && <p className="help is-danger is-size-5">This document number is invalid</p> }
+          {isDniExistent && <p className="help is-danger is-size-5">This document number already exists</p>}
         </div>
 
         <div style={{ height: '133px' }} className="field">
