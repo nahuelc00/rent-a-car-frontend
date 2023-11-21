@@ -50,6 +50,7 @@ function CarForm({ isUpdate }) {
   const formik = useFormik({
     initialValues: {
       brand: '',
+      licensePlate: '',
       year: '',
       color: '',
       passengers: '',
@@ -76,6 +77,7 @@ function CarForm({ isUpdate }) {
         formik.setValues({
           id: car.id,
           brand: car.brand,
+          licensePlate: car.licensePlate,
           year: car.year,
           color: car.color,
           passengers: car.passengers,
@@ -149,6 +151,16 @@ function CarForm({ isUpdate }) {
                 value={formik.values.brand}
                 onChange={formik.handleChange}
                 className={formik.values.brand === '' ? 'input is-danger' : 'input is-success'}
+              />
+            </fieldset>
+            <fieldset className="mb-2">
+              <label className="has-text-weight-semibold">License plate</label>
+              <input
+                type="text"
+                name="licensePlate"
+                value={formik.values.licensePlate}
+                onChange={formik.handleChange}
+                className={formik.values.licensePlate === '' ? 'input is-danger' : 'input is-success'}
               />
             </fieldset>
             <fieldset className="mb-2">
