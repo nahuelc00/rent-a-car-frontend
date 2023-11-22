@@ -46,6 +46,7 @@ function CarForm({ isUpdate }) {
   } = useHandleSaveCar();
   const { handleUpdateCar, isUpdating, endOfUpdating } = useHandleUpdateCar();
   const { id } = useParams();
+  const isFormUpdate = id !== undefined;
 
   const { isLoading, isUserAdmin } = useGetIfIsUserAdmin();
 
@@ -170,6 +171,7 @@ function CarForm({ isUpdate }) {
             <fieldset className="mb-2">
               <label className="has-text-weight-semibold">License plate</label>
               <input
+                disabled={isFormUpdate}
                 type="text"
                 name="licensePlate"
                 value={formik.values.licensePlate}
