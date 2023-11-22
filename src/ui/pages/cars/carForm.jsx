@@ -125,7 +125,7 @@ function CarForm({ isUpdate }) {
 
   if (endOfSave && errorInSave) {
     return (
-      <InformationModal title="This license plate is already registered" exitRoute="/cars" />
+      <InformationModal title={errorInSave} exitRoute="/cars" />
     );
   }
 
