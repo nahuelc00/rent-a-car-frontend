@@ -41,7 +41,9 @@ function buildFormData(formValues) {
 
 function CarForm({ isUpdate }) {
   const [displayModalSave, setDisplayModalSave] = useState(false);
-  const { handleSaveCar, isSaving, endOfSave } = useHandleSaveCar();
+  const {
+    handleSaveCar, isSaving, endOfSave, error: errorInSave,
+  } = useHandleSaveCar();
   const { handleUpdateCar, isUpdating, endOfUpdating } = useHandleUpdateCar();
   const { id } = useParams();
 
@@ -115,7 +117,19 @@ function CarForm({ isUpdate }) {
     );
   }
 
-  if (endOfSave || endOfUpdating) {
+  if (endOfSave && !errorInSave) {
+    return (
+      <InformationModal title="Car saved successfully" exitRoute="/cars" />
+    );
+  }
+
+  if (endOfSave && errorInSave) {
+    return (
+      <InformationModal title="This license plate is already registered" exitRoute="/cars" />
+    );
+  }
+
+  if (endOfUpdating) {
     return (
       <InformationModal title="Car saved successfully" exitRoute="/cars" />
     );
