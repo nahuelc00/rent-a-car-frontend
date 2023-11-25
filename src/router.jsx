@@ -12,6 +12,8 @@ import { Cars } from './ui/pages/cars/cars';
 import { Dashboard } from './ui/pages/dashboard';
 import { LogOut } from './ui/pages/auth/logout';
 import { Profile } from './ui/pages/profile';
+import { Rents } from './ui/pages/rents/rents';
+import { RentForm } from './ui/pages/rents/rentForm';
 
 const router = createBrowserRouter([
   {
@@ -65,6 +67,14 @@ const router = createBrowserRouter([
   {
     path: 'client/register',
     element: <RegisterClient />,
+  },
+  {
+    path: 'rents',
+    element: <Rents />,
+  },
+  {
+    path: 'rent/add',
+    element: <RentForm />,
   },
 
 ]);
