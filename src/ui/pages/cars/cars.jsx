@@ -27,6 +27,7 @@ function Cars() {
               <CarCard
                 key={car.id}
                 id={car.id}
+                licensePlate={car.licensePlate}
                 brand={car.brand}
                 passengers={car.passengers}
                 kms={car.kms}
