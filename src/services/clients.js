@@ -10,4 +10,13 @@ function registerClient(clientData) {
   }).then((res) => res.json());
 }
 
-export { registerClient };
+function getClient(id) {
+  return fetch(`${API_HOST}/client/${id}`, {
+    headers: {
+      'content-type': 'application/json',
+    },
+    method: 'GET',
+  }).then((res) => res.json());
+}
+
+export { registerClient, getClient };
