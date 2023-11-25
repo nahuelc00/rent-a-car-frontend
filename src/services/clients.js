@@ -1,3 +1,5 @@
+import { getAccessToken } from '../utilities';
+
 const API_HOST = import.meta.env.VITE_API_HOST;
 
 function registerClient(clientData) {
@@ -14,6 +16,7 @@ function getClient(id) {
   return fetch(`${API_HOST}/client/${id}`, {
     headers: {
       'content-type': 'application/json',
+      authorization: getAccessToken(),
     },
     method: 'GET',
   }).then((res) => res.json());
