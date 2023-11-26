@@ -12,9 +12,9 @@ import { ActionModal } from '../../components/ActionModal';
 function Rents() {
   const { isLoading, isUserAdmin } = useGetIfIsUserAdmin();
   const [rents, setRents] = useState([]);
-  const [rentDeleted, setRentDeleted] = useState();
-  const [modalDeleteRent, setModalDeleteRent] = useState();
-  const [rentIdToDelete, setRentIdToDelete] = useState();
+  const [rentDeleted, setRentDeleted] = useState(false);
+  const [modalDeleteRent, setModalDeleteRent] = useState(false);
+  const [rentIdToDelete, setRentIdToDelete] = useState(null);
 
   useEffect(() => {
     (async () => {
