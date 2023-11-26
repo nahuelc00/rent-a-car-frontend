@@ -23,4 +23,13 @@ function getRents() {
   }).then((res) => res.json());
 }
 
-export { saveRent, getRents };
+function deleteRent(rentId) {
+  return fetch(`${API_HOST}/rent/${rentId}`, {
+    headers: {
+      'content-type': 'application/json',
+    },
+    method: 'DELETE',
+  }).then((res) => res.json());
+}
+
+export { saveRent, getRents, deleteRent };
