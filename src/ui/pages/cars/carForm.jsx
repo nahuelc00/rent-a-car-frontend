@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 /* eslint-disable consistent-return */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable guard-for-in */
@@ -338,9 +337,13 @@ function CarForm({ isUpdate }) {
   return <h1 className="title is-size-1">Not authorized</h1>;
 }
 
+CarForm.defaultProps = {
+  isUpdate: null,
+};
+
 CarForm.propTypes = {
   isUpdate: PropTypes.oneOfType([
-    PropTypes.string,
+    PropTypes.object,
     PropTypes.bool,
   ]),
 };
