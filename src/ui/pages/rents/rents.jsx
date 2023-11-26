@@ -14,7 +14,7 @@ function Rents() {
   const [rents, setRents] = useState([]);
   const [rentDeleted, setRentDeleted] = useState();
   const [modalDeleteRent, setModalDeleteRent] = useState();
-  const [idRentDeleted, setIdRentDeleted] = useState();
+  const [rentIdToDelete, setRentIdToDelete] = useState();
 
   useEffect(() => {
     (async () => {
@@ -60,7 +60,7 @@ function Rents() {
           action="Delete"
           subtitle="Are you sure you want to delete this rent?"
           handleAffirmationModal={async () => {
-            const response = await deleteRent(idRentDeleted);
+            const response = await deleteRent(rentIdToDelete);
             const isSuccessfullyDeleted = response.affected === 1;
             if (isSuccessfullyDeleted) {
               setModalDeleteRent(false);
@@ -113,9 +113,9 @@ function Rents() {
                   <td>{ `${rent.rent.paidRent === true ? 'Yes' : 'No'}` }</td>
                   <td>
                     <button
-                      onClick={async () => {
+                      onClick={() => {
                         setModalDeleteRent(true);
-                        setIdRentDeleted(rent.rent.id);
+                        setRentIdToDelete(rent.rent.id);
                       }}
                       type="button"
                     >
