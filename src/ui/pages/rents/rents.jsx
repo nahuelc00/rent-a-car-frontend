@@ -88,55 +88,57 @@ function Rents() {
         <main>
           <Link to="/rent/add" className="button is-primary mb-6">Add rent</Link>
 
-          <table className="table">
-            <thead>
-              <tr>
-                <th><abbr title="client">Client</abbr></th>
-                <th>Car</th>
-                <th><abbr title="unitPrice">Unit price</abbr></th>
-                <th><abbr title="totalPrice">Total price</abbr></th>
-                <th><abbr title="dateFrom">From</abbr></th>
-                <th><abbr title="dateTo">To</abbr></th>
-                <th><abbr title="paymentMethod">Payment.M</abbr></th>
-                <th><abbr title="paidRent">Paid rent</abbr></th>
-              </tr>
-            </thead>
-            <tbody>
-              { rents.map((rent) => (
-                <tr key={rent.rent.id}>
-                  <th>{`${rent.client.documentNumber}`}</th>
-                  <td>{`${rent.car.licensePlate}`}</td>
-                  <td>{`${rent.rent.unitPrice}`}</td>
-                  <td>{`${rent.rent.totalPrice}`}</td>
-                  <td>{`${rent.rent.dateFrom}`}</td>
-                  <td>{`${rent.rent.dateTo}`}</td>
-                  <td className="is-capitalized">{`${rent.rent.paymentMethod}`}</td>
-                  <td>{ `${rent.rent.paidRent ? 'Yes' : 'No'}` }</td>
-                  <td>
-                    <button
-                      onClick={() => {
-                        setModalDeleteRent(true);
-                        setRentIdToDelete(rent.rent.id);
-                      }}
-                      type="button"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => {
-                        navigate(`/rent/edit/${rent.rent.id}`);
-                      }}
-                      type="button"
-                    >
-                      Edit
-                    </button>
-                  </td>
+          <div>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th><abbr title="client">Client</abbr></th>
+                  <th>Car</th>
+                  <th><abbr title="unitPrice">Unit price</abbr></th>
+                  <th><abbr title="totalPrice">Total price</abbr></th>
+                  <th><abbr title="dateFrom">From</abbr></th>
+                  <th><abbr title="dateTo">To</abbr></th>
+                  <th><abbr title="paymentMethod">Payment.M</abbr></th>
+                  <th><abbr title="paidRent">Paid rent</abbr></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                { rents.map((rent) => (
+                  <tr key={rent.rent.id}>
+                    <th>{`${rent.client.documentNumber}`}</th>
+                    <td>{`${rent.car.licensePlate}`}</td>
+                    <td>{`${rent.rent.unitPrice}`}</td>
+                    <td>{`${rent.rent.totalPrice}`}</td>
+                    <td>{`${rent.rent.dateFrom}`}</td>
+                    <td>{`${rent.rent.dateTo}`}</td>
+                    <td className="is-capitalized">{`${rent.rent.paymentMethod}`}</td>
+                    <td>{ `${rent.rent.paidRent ? 'Yes' : 'No'}` }</td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          setModalDeleteRent(true);
+                          setRentIdToDelete(rent.rent.id);
+                        }}
+                        type="button"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          navigate(`/rent/edit/${rent.rent.id}`);
+                        }}
+                        type="button"
+                      >
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
         </main>
       </>
