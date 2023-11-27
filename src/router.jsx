@@ -76,6 +76,10 @@ const router = createBrowserRouter([
     path: 'rent/add',
     element: <RentForm />,
   },
+  {
+    path: 'rent/edit/:id',
+    element: <RentForm isUpdate />,
+  },
 
 ]);
 

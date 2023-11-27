@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useGetIfIsUserAdmin } from '../../../hooks/client/useGetIfIsUserAdmin';
 import { Loader } from '../../components/Loader';
 import { PageExit } from '../../components/PageExit';
@@ -15,6 +15,7 @@ function Rents() {
   const [rentDeleted, setRentDeleted] = useState(false);
   const [modalDeleteRent, setModalDeleteRent] = useState(false);
   const [rentIdToDelete, setRentIdToDelete] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -110,7 +111,7 @@ function Rents() {
                   <td>{`${rent.rent.dateFrom}`}</td>
                   <td>{`${rent.rent.dateTo}`}</td>
                   <td className="is-capitalized">{`${rent.rent.paymentMethod}`}</td>
-                  <td>{ `${rent.rent.paidRent === true ? 'Yes' : 'No'}` }</td>
+                  <td>{ `${rent.rent.paidRent ? 'Yes' : 'No'}` }</td>
                   <td>
                     <button
                       onClick={() => {
@@ -121,7 +122,16 @@ function Rents() {
                     >
                       Delete
                     </button>
-
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        navigate(`/rent/edit/${rent.rent.id}`);
+                      }}
+                      type="button"
+                    >
+                      Edit
+                    </button>
                   </td>
                 </tr>
               ))}
