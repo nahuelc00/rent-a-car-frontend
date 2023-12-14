@@ -10,7 +10,9 @@ import { useGetIfIsUserAdmin } from '../../../hooks/client/useGetIfIsUserAdmin';
 function Delete() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { handleDeleteCar, isLoading, endOfDelete } = useHandleDeleteCar();
+  const {
+    handleDeleteCar, isLoading, endOfDelete, error: errorInDelete,
+  } = useHandleDeleteCar();
   const { isLoading: userLoading, isUserAdmin } = useGetIfIsUserAdmin();
 
   function handleDelete() {
@@ -29,9 +31,15 @@ function Delete() {
     );
   }
 
-  if (endOfDelete) {
+  if (endOfDelete && !errorInDelete) {
     return (
       <InformationModal title="Car deleted successfully" exitRoute="/cars" />
+    );
+  }
+
+  if (errorInDelete) {
+    return (
+      <InformationModal title={errorInDelete} exitRoute="/cars" />
     );
   }
 
