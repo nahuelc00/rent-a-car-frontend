@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
-import { validateEmail } from '../../../utilities';
+import { getAccessToken, validateEmail } from '../../../utilities';
 import { loginUser } from '../../../services/users';
 import { PageExit } from '../../components/PageExit';
 
@@ -22,6 +22,7 @@ function validateForm(values) {
 function LoginForm() {
   const [invalidCredentials, setInvalidCredentials] = useState(false);
   const navigate = useNavigate();
+  const isUserLogged = getAccessToken();
 
   const formik = useFormik({
     initialValues: {
@@ -49,6 +50,10 @@ function LoginForm() {
       }
     },
   });
+
+  if (isUserLogged) {
+    return <h1 className="title is-size-1">You are logged in</h1>;
+  }
 
   return (
     <>

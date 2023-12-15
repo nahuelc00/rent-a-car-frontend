@@ -3,7 +3,9 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { capitalizeFirstLetterAndRestInUpperCase, validateEmail, validatePassword } from '../../../utilities';
+import {
+  capitalizeFirstLetterAndRestInUpperCase, getAccessToken, validateEmail, validatePassword,
+} from '../../../utilities';
 import { registerUser } from '../../../services/users';
 import { PageExit } from '../../components/PageExit';
 
@@ -35,6 +37,7 @@ function assignInputEmailClassname(emailValue, isEmailExistent) {
 function RegisterForm() {
   const navigate = useNavigate();
   const [isEmailExistent, setIsEmailExistent] = useState(false);
+  const isUserLogged = getAccessToken();
 
   const formik = useFormik({
     initialValues: {
@@ -62,6 +65,10 @@ function RegisterForm() {
       }
     },
   });
+
+  if (isUserLogged) {
+    return <h1 className="title is-size-1">You are logged in</h1>;
+  }
 
   return (
     <>
