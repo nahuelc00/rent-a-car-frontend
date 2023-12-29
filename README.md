@@ -14,9 +14,10 @@ Frontend of the rent a car project. Made with React and tested with Cypress.
 ## Usage
 First all: Create the .env file and set the environment variables of the .env.dist file and add the values to it.
 
+
 After this, while running the backend:
 ```bash
-npm run dev
+npm install && npm run dev
 ``` 
 
 ### Testing
