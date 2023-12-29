@@ -34,7 +34,7 @@ function Header() {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <Link to="/" className="navbar-item">
-            <img alt="" src="/images/key-car.png" width="30" height="30" />
+            <img alt="" src="/key-car.png" width="30" height="30" />
           </Link>
 
           <div onClick={handleClickInMenuBurger} className="navbar-burger">
