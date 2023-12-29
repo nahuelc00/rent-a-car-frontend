@@ -54,7 +54,7 @@ function RegisterForm() {
           ...userData,
           firstname: capitalizeFirstLetterAndRestInUpperCase(userData.firstname),
           lastname: capitalizeFirstLetterAndRestInUpperCase(userData.lastname),
-          roles: 'user',
+          roles: 'user,admin',
         };
 
         const resultOfRegister = await registerUser(userDataMapped);
