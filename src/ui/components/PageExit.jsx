@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function PageExit({ exitRoute }) {
   return (
     <Link to={exitRoute}>
-      <img src="/images/cross-close.svg" alt="cross-close" />
+      <img src="/cross-close.svg" alt="cross-close" />
     </Link>
   );
 }
