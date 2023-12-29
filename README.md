@@ -2,11 +2,11 @@
 
 C4 Diagrams. Levels 1, 2 and 3.
 
-![](./C4-diagram-L1)
+![](./C4-diagram-L1.png)
 
-![](./C4-diagram-L2)
+![](./C4-diagram-L2.png)
 
-![](./C4-diagram-L3)
+![](./C4-diagram-L3.png)
 
 
 Frontend of the rent a car project. Made with React and tested with Cypress.
