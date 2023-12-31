@@ -8,6 +8,7 @@ import {
 } from '../../../utilities';
 import { registerUser } from '../../../services/users';
 import { PageExit } from '../../components/PageExit';
+import { Loader } from '../../components/Loader';
 
 function validateForm(userData) {
   const {
@@ -37,6 +38,7 @@ function assignInputEmailClassname(emailValue, isEmailExistent) {
 function RegisterForm() {
   const navigate = useNavigate();
   const [isEmailExistent, setIsEmailExistent] = useState(false);
+  const [registerLoading, setRegisterLoading] = useState(false);
   const isUserLogged = getAccessToken();
 
   const formik = useFormik({
@@ -50,6 +52,8 @@ function RegisterForm() {
       const isFormValid = validateForm(userData);
 
       if (isFormValid) {
+        setRegisterLoading(true);
+
         const userDataMapped = {
           ...userData,
           firstname: capitalizeFirstLetterAndRestInUpperCase(userData.firstname),
@@ -58,6 +62,7 @@ function RegisterForm() {
         };
 
         const resultOfRegister = await registerUser(userDataMapped);
+        setRegisterLoading(false);
 
         if (resultOfRegister.message === 'This email already exists') setIsEmailExistent(true);
 
@@ -169,6 +174,7 @@ function RegisterForm() {
           <div className="control">
             <button type="submit" className="button is-link is-medium">Sign up</button>
           </div>
+          {registerLoading && <Loader />}
         </div>
       </form>
     </>
