@@ -5,11 +5,13 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAccessToken } from '../../utilities';
 import { getUser } from '../../services/users';
+import { Loader } from './Loader';
 
 function Header() {
   const [displayMenuBurger, setDisplayMenuBurger] = useState(false);
   const [initialOfName, setInitialOfName] = useState('');
   const [isUserAdmin, setIsUserAdmin] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const userAccessToken = getAccessToken();
 
@@ -17,9 +19,12 @@ function Header() {
     const isUserLogged = userAccessToken !== undefined;
 
     if (isUserLogged) {
+      setIsLoading(true);
+
       getUser(userAccessToken).then((user) => {
         if (user.roles?.includes('admin')) setIsUserAdmin(true);
         const firstLetter = user.firstname?.charAt(0);
+        setIsLoading(false);
         setInitialOfName(firstLetter);
       });
     }
@@ -27,6 +32,10 @@ function Header() {
 
   function handleClickInMenuBurger() {
     setDisplayMenuBurger(!displayMenuBurger);
+  }
+
+  if (isLoading) {
+    return <Loader />;
   }
 
   return (
