@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getAccessToken, validateEmail } from '../../../utilities';
 import { loginUser } from '../../../services/users';
 import { PageExit } from '../../components/PageExit';
+import { Loader } from '../../components/Loader';
 
 function validateForm(values) {
   const { email, password } = values;
@@ -21,6 +22,7 @@ function validateForm(values) {
 
 function LoginForm() {
   const [invalidCredentials, setInvalidCredentials] = useState(false);
+  const [loginLoading, setLoginLoading] = useState(false);
   const navigate = useNavigate();
   const isUserLogged = getAccessToken();
 
@@ -32,10 +34,16 @@ function LoginForm() {
     onSubmit: (values) => {
       const isFormValid = validateForm(values);
       if (isFormValid) {
+        setLoginLoading(true);
+
         const loginData = { email: values.email, password: values.password };
 
         loginUser(loginData).then((res) => {
-          if (res.statusCode === 401) setInvalidCredentials(true);
+          if (res.statusCode === 401) {
+            setInvalidCredentials(true);
+            setLoginLoading(false);
+          }
+
           if (res.token) {
             const date = new Date();
             const dateAddingTwoDays = date.getDate() + 2;
@@ -44,6 +52,8 @@ function LoginForm() {
             const dateForCookie = date.toUTCString();
 
             document.cookie = `access_token=${res.token};expires=${dateForCookie};`;
+
+            setLoginLoading(false);
             navigate('/');
           }
         });
@@ -104,6 +114,7 @@ function LoginForm() {
           </div>
           <span className="is-size-5">or</span>
           <Link to="/register" className="button is-ghost is-medium">Register</Link>
+          {loginLoading && <Loader />}
         </div>
       </form>
     </>
