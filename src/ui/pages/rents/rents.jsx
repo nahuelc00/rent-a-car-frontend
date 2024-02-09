@@ -45,7 +45,7 @@ function Rents() {
 
   if (isLoading) {
     return (
-      <div className="is-flex is-justify-content-center">
+      <div>
         <Loader />
       </div>
     );
