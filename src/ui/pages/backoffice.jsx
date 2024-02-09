@@ -11,7 +11,7 @@ function Backoffice() {
 
   if (isLoading) {
     return (
-      <div className="is-flex is-justify-content-center">
+      <div>
         <Loader />
       </div>
     );
