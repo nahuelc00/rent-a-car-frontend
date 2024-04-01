@@ -2,13 +2,18 @@
 
 https://rent-a-car-frontend-ruby.vercel.app/
 
-C4 Diagrams. Levels 1, 2 and 3.
+#### C4 Diagrams. Levels 1, 2 and 3.
 
 ![](./C4-diagram-L1.png)
 
 ![](./C4-diagram-L2.png)
 
 ![](./C4-diagram-L3.png)
+
+#### Database diagram
+
+![](./DIAGRAM-DB.png)
+
 
 
 Frontend of the rent a car project. Made with React using Bulma as css framework and tested with Cypress.
