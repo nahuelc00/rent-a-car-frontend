@@ -10,10 +10,6 @@ https://rent-a-car-frontend-ruby.vercel.app/
 
 ![](./C4-diagram-L3.png)
 
-#### Database diagram
-
-![](./DIAGRAM-DB.png)
-
 ## Summary
 
 Frontend of the rent a car project. Made with React using Bulma as css framework and tested with Cypress.
